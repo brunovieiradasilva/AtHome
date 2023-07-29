@@ -107,16 +107,13 @@ public class CRUD {
 // retrieve  query results asynchronously using query.get()
             ApiFuture<QuerySnapshot> querySnapshot = query.get();
 
-            for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
-                if(document.get("senha").equals(senha)){
+                if(querySnapshot.get().getDocuments().get(0).get("senha").equals(senha)){
                     return true;
                 } else return false;
-            }
-
+            
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-        return false;
     }
 }

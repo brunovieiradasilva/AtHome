@@ -47,6 +47,7 @@ private String user;
         usuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         usuario.setForeground(new java.awt.Color(51, 51, 51));
         usuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        usuario.setEnabled(false);
         usuario.setOpaque(false);
         usuario.setBackground(new java.awt.Color(0,0,0,1));
         usuario.setText(user);
@@ -78,8 +79,7 @@ private String user;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(fundoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(fundoHome))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 1, -1, 610));
@@ -137,7 +137,5 @@ private String user;
     private javax.swing.JLabel fundoHome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField usuario;
-    private javax.swing.JTextField usuarioFD;
-    private javax.swing.JTextField usuarioFD1;
     // End of variables declaration//GEN-END:variables
 }

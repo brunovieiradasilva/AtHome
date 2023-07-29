@@ -6,6 +6,7 @@ package Telas;
 
 import connection.CRUD;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
@@ -55,6 +56,11 @@ public class Login extends javax.swing.JFrame {
                 usuarioFDActionPerformed(evt);
             }
         });
+        usuarioFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usuarioFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 210, -1));
 
         senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -65,6 +71,11 @@ public class Login extends javax.swing.JFrame {
         senhaFD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaFDActionPerformed(evt);
+            }
+        });
+        senhaFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                senhaFDKeyPressed(evt);
             }
         });
         getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 210, -1));
@@ -78,9 +89,15 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 170, 20));
 
         fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\ImagemLogin.png")); // NOI18N
+        fundo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fundoKeyPressed(evt);
+            }
+        });
         getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usuarioFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioFDActionPerformed
@@ -103,7 +120,7 @@ CRUD oi;
                dispose();
               
             }else{
-JOptionPane.showMessageDialog(this,"Erro no login");
+JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
             }
             
         } catch (InterruptedException | ExecutionException | IOException ex) {
@@ -111,6 +128,27 @@ JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login"
             System.out.println("não funfo");
         }
     }//GEN-LAST:event_buttonActionPerformed
+
+    private void usuarioFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioFDKeyPressed
+        // TODO add your handling code here:
+        enterPressed(evt);
+    }//GEN-LAST:event_usuarioFDKeyPressed
+
+    private void senhaFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senhaFDKeyPressed
+        // TODO add your handling code here:
+       enterPressed(evt);
+        
+    }//GEN-LAST:event_senhaFDKeyPressed
+    private void fundoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fundoKeyPressed
+        // TODO add your handling code here:
+        enterPressed(evt);
+    }//GEN-LAST:event_fundoKeyPressed
+
+    private void enterPressed(java.awt.event.KeyEvent evt){
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             buttonActionPerformed(null);
+        }
+    }
 
     /**
      * @param args the command line arguments
