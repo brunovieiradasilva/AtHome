@@ -7,9 +7,6 @@ package Telas;
 import connection.CRUD;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -20,12 +17,13 @@ import modelos.produtoTableModel;
  *
  * @author Bruno
  */
-public class Estoque extends javax.swing.JFrame {
-
+public class EstoqueView extends javax.swing.JFrame {
+private HomeView h;
     /**
      * Creates new form Estoque
      */
-    public Estoque() {
+    public EstoqueView(HomeView home) {
+        h = home;
         initComponents();
 
     }
@@ -54,8 +52,6 @@ public class Estoque extends javax.swing.JFrame {
         prdQuantidade = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        addEstoque = new javax.swing.JMenuItem();
-        addItem = new javax.swing.JMenuItem();
         removeBtn = new javax.swing.JMenu();
         editBtn = new javax.swing.JMenu();
         editNome = new javax.swing.JMenuItem();
@@ -68,12 +64,17 @@ public class Estoque extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         estoqueTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
@@ -119,23 +120,24 @@ public class Estoque extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().setLayout(new javax.swing.BoxLayout(jInternalFrame1.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Produto:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Quantidade:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Preço:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ID:");
 
         prdPreco.setEditable(false);
         prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdPreco.setForeground(new java.awt.Color(204, 204, 204));
         prdPreco.setText(Produto.NA);
         prdPreco.setToolTipText("");
         prdPreco.setBorder(null);
@@ -150,6 +152,7 @@ public class Estoque extends javax.swing.JFrame {
 
         prdID.setEditable(false);
         prdID.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdID.setForeground(new java.awt.Color(204, 204, 204));
         prdID.setText(Produto.NA);
         prdID.setToolTipText("");
         prdID.setBorder(null);
@@ -164,6 +167,7 @@ public class Estoque extends javax.swing.JFrame {
 
         prdNome.setEditable(false);
         prdNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdNome.setForeground(new java.awt.Color(204, 204, 204));
         prdNome.setText(Produto.NA);
         prdNome.setToolTipText("");
         prdNome.setBorder(null);
@@ -178,6 +182,7 @@ public class Estoque extends javax.swing.JFrame {
 
         prdQuantidade.setEditable(false);
         prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdQuantidade.setForeground(new java.awt.Color(204, 204, 204));
         prdQuantidade.setText(Produto.NA);
         prdQuantidade.setToolTipText("");
         prdQuantidade.setBorder(null);
@@ -257,20 +262,11 @@ public class Estoque extends javax.swing.JFrame {
         jMenuBar1.setFocusable(false);
 
         jMenu1.setText("adicionar");
-
-        addEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        addEstoque.setText("item ao estoque");
-        addEstoque.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addEstoqueActionPerformed(evt);
+                jMenu1ActionPerformed(evt);
             }
         });
-        jMenu1.add(addEstoque);
-
-        addItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        addItem.setText("Novo item");
-        jMenu1.add(addItem);
-
         jMenuBar1.add(jMenu1);
 
         removeBtn.setText("remover");
@@ -350,7 +346,7 @@ public class Estoque extends javax.swing.JFrame {
 
         produtoTableModel tableModel = null;
         try{
-            new produtoTableModel();
+            tableModel = new produtoTableModel();
         }catch(Exception e){
 
         }
@@ -428,6 +424,15 @@ public class Estoque extends javax.swing.JFrame {
         prdQuantidade.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(),2).toString());
         prdPreco.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(),3).toString());
     }//GEN-LAST:event_estoqueTableMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        h.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void pesquisaFDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pesquisaFDActionPerformed
         // TODO add your handling code here:
@@ -563,27 +568,26 @@ public class Estoque extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstoqueView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstoqueView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstoqueView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstoqueView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Estoque().setVisible(true);
+                new EstoqueView(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem addEstoque;
-    private javax.swing.JMenuItem addItem;
     private javax.swing.JMenu editBtn;
     private javax.swing.JMenuItem editId;
     private javax.swing.JMenuItem editNome;

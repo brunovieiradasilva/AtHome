@@ -567,8 +567,11 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="estoqueTableMouseClicked"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="produtoTableModel tableModel = new produtoTableModel();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="produtoTableModel tableModel = null;&#xa;try{&#xa; new produtoTableModel();&#xa;}catch(Exception e){&#xa;&#xa;}"/>
           </AuxValues>
         </Component>
       </SubComponents>

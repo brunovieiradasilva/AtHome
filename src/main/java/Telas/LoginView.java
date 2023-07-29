@@ -5,25 +5,21 @@
 package Telas;
 
 import connection.CRUD;
-import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import modelos.Images;
+
 /**
  *
  * @author Bruno
  */
-public class Login extends javax.swing.JFrame {
+public class LoginView extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginView() {
         initComponents();
     }
 
@@ -110,22 +106,22 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaFDActionPerformed
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
-CRUD oi;
-       
+        CRUD oi;
+
         try {
-                        oi = new CRUD();
+            oi = new CRUD();
             boolean contaExiste = oi.loginVendedor(usuarioFD.getText(), new String(senhaFD.getPassword()));
-            if(contaExiste){
-            Home home = new Home(usuarioFD.getText());
-            home.setVisible(true);
-               dispose();
-              
-            }else{
-JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
+            if (contaExiste) {
+                HomeView home = new HomeView(usuarioFD.getText());
+                home.setVisible(true);
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
             }
-            
+
         } catch (InterruptedException | ExecutionException | IOException ex) {
-JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
             System.out.println("não funfo");
         }
     }//GEN-LAST:event_buttonActionPerformed
@@ -137,17 +133,17 @@ JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login"
 
     private void senhaFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senhaFDKeyPressed
         // TODO add your handling code here:
-       enterPressed(evt);
-        
+        enterPressed(evt);
+
     }//GEN-LAST:event_senhaFDKeyPressed
     private void fundoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fundoKeyPressed
         // TODO add your handling code here:
         enterPressed(evt);
     }//GEN-LAST:event_fundoKeyPressed
 
-    private void enterPressed(java.awt.event.KeyEvent evt){
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             buttonActionPerformed(null);
+    private void enterPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            buttonActionPerformed(null);
         }
     }
 
@@ -168,20 +164,21 @@ JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login"
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }

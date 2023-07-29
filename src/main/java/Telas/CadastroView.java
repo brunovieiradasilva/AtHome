@@ -6,8 +6,6 @@ package Telas;
 
 import connection.CRUD;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos.Vendedor;
 
@@ -15,12 +13,15 @@ import modelos.Vendedor;
  *
  * @author Bruno
  */
-public class Cadastro extends javax.swing.JFrame {
+public class CadastroView extends javax.swing.JFrame {
+
+    private HomeView h;
 
     /**
      * Creates new form Cadastro
      */
-    public Cadastro() {
+    public CadastroView(HomeView home) {
+        h = home;
         initComponents();
     }
 
@@ -42,6 +43,11 @@ public class Cadastro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -128,11 +134,10 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             CRUD oi = new CRUD();
-            boolean checkIfUsuarioExist = oi.checkIfExist("vendedor",usuarioFD.getText()), checkEmail = true;
+            boolean checkIfUsuarioExist = oi.checkIfExist("vendedor", usuarioFD.getText()), checkEmail = true;
 
             //vendo se o meail está no formato certo
             checkEmail = emailFD.getText().contains("@") && (emailFD.getText().endsWith(".com") || emailFD.getText().endsWith(".br"));
-
 
             if (!checkIfUsuarioExist && checkEmail) {
                 Vendedor vendedor = new Vendedor(nomeFD.getText(), "3", usuarioFD.getText(), emailFD.getText(), new String(senhaFD.getPassword()));
@@ -155,6 +160,11 @@ public class Cadastro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+                h.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -172,20 +182,21 @@ public class Cadastro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastro().setVisible(true);
+                new CadastroView(null).setVisible(true);
             }
         });
     }

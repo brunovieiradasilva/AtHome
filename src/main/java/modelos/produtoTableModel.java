@@ -17,27 +17,27 @@ import javax.swing.table.AbstractTableModel;
 public class produtoTableModel extends AbstractTableModel {
 
     private List<Produto> dados = new ArrayList<>();
-    private String[] columns = {"NOME","ID"};
+    private String[] columns = {"NOME", "ID"};
 
     public produtoTableModel() throws IOException {
         CRUD oi = new CRUD();
-        
+
         Produto[] produtos = oi.getTodosProdutos();
-        for(Produto p: produtos){
+        for (Produto p : produtos) {
             addRow(p);
         }
-            
+
     }
-          
+
     @Override
-    public String getColumnName(int column){
-       return columns[column];
+    public String getColumnName(int column) {
+        return columns[column];
     }
-    
+
     @Override
     public int getRowCount() {
         return dados.size();
-        }
+    }
 
     @Override
     public int getColumnCount() {
@@ -46,21 +46,21 @@ public class produtoTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-       switch(columnIndex){
-           case 0:
-               return dados.get(rowIndex).getName();
-           case 1:
-               return dados.get(rowIndex).getId_produto();
-           case 2: 
-               return dados.get(rowIndex).getQuntidadeEstoque();
-           case 3: 
-               return dados.get(rowIndex).getPreco();
-       } 
-       return null;
+        switch (columnIndex) {
+            case 0:
+                return dados.get(rowIndex).getName();
+            case 1:
+                return dados.get(rowIndex).getId_produto();
+            case 2:
+                return dados.get(rowIndex).getQuntidadeEstoque();
+            case 3:
+                return dados.get(rowIndex).getPreco();
+        }
+        return null;
     }
-    
-    public void addRow(Produto p){
+
+    public void addRow(Produto p) {
         this.dados.add(p);
     }
-    
+
 }
