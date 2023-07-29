@@ -81,6 +81,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 210, -1));
 
         button.setContentAreaFilled(false);
+        button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonActionPerformed(evt);

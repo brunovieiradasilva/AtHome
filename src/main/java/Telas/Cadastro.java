@@ -4,6 +4,13 @@
  */
 package Telas;
 
+import connection.CRUD;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelos.Vendedor;
+
 /**
  *
  * @author Bruno
@@ -33,7 +40,8 @@ public class Cadastro extends javax.swing.JFrame {
         button = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -85,12 +93,19 @@ public class Cadastro extends javax.swing.JFrame {
         getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 210, -1));
 
         button.setContentAreaFilled(false);
+        button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonActionPerformed(evt);
+            }
+        });
         getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 170, 20));
 
-        fundo.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\ImagemCadastro.png")); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\ImagemCadastro.png")); // NOI18N
         getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 601));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomeFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeFDActionPerformed
@@ -108,6 +123,37 @@ public class Cadastro extends javax.swing.JFrame {
     private void senhaFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaFDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaFDActionPerformed
+
+    private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
+        // TODO add your handling code here:
+        try {
+            CRUD oi = new CRUD();
+            boolean checkIfUsuarioExist = oi.checkIfExist("vendedor",usuarioFD.getText()), checkEmail = true;
+
+            //vendo se o meail está no formato certo
+            checkEmail = emailFD.getText().contains("@") && (emailFD.getText().endsWith(".com") || emailFD.getText().endsWith(".br"));
+
+
+            if (!checkIfUsuarioExist && checkEmail) {
+                Vendedor vendedor = new Vendedor(nomeFD.getText(), "3", usuarioFD.getText(), emailFD.getText(), new String(senhaFD.getPassword()));
+                oi.add(vendedor);
+                dispose();
+                JOptionPane.showMessageDialog(this, "Vendedor adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
+            } else {
+                if (checkIfUsuarioExist) {
+                    JOptionPane.showMessageDialog(this, "Usuario já existe.", "Erro no cadastro", HEIGHT);
+
+                } else if (!checkEmail) {
+                    JOptionPane.showMessageDialog(this, "Email não corresponde ao formato adequado.", "Erro no cadastro", HEIGHT);
+
+                }
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Algum erro ocorreu, tente novamente.", "Erro no cadastro", JOptionPane.WARNING_MESSAGE);
+
+        }
+
+    }//GEN-LAST:event_buttonActionPerformed
 
     /**
      * @param args the command line arguments

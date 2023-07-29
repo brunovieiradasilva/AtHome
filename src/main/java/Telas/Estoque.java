@@ -7,6 +7,9 @@ package Telas;
 import connection.CRUD;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -345,7 +348,12 @@ public class Estoque extends javax.swing.JFrame {
         pesquisaBox.add("NOME");
         pesquisaBox.add("ID");
 
-        produtoTableModel tableModel = new produtoTableModel();
+        produtoTableModel tableModel = null;
+        try{
+            new produtoTableModel();
+        }catch(Exception e){
+
+        }
         estoqueTable.setModel(tableModel);
         estoqueTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
