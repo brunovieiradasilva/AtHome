@@ -5,15 +5,18 @@
 package connection;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.DefaultListModel;
-import javax.swing.table.DefaultTableModel;
+import java.util.concurrent.ExecutionException;
 import modelos.Produto;
 
 /**
@@ -22,9 +25,13 @@ import modelos.Produto;
  */
 public class CRUD {
 
-    public CRUD() {
+    public CRUD() throws IOException {
+        try{
         FirebaseInitialize conexao = new FirebaseInitialize();
         db = conexao.iniciarConexao();
+}catch(IOException e){
+    System.out.println("ja deu merda");
+}
     }
 
     private static Firestore db = null;
@@ -43,7 +50,7 @@ public class CRUD {
             ApiFuture<WriteResult> future = db.collection("cliente").document(cpf).set(docData);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("merda no CRUD");
             return false;
         }
 // ...
@@ -90,5 +97,26 @@ public class CRUD {
             return new Produto[0];
         }
 
+    }
+
+    public boolean loginVendedor(String usuario, String senha) throws InterruptedException, ExecutionException {
+        try {
+            CollectionReference cities = db.collection("vendedor");
+// Create a query against the collection.
+            Query query = cities.whereEqualTo("usuario", usuario);
+// retrieve  query results asynchronously using query.get()
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+
+            for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
+                if(document.get("senha").equals(senha)){
+                    return true;
+                } else return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
     }
 }

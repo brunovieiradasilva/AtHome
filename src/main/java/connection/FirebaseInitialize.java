@@ -10,6 +10,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -18,21 +20,20 @@ import java.io.FileInputStream;
 
 public class FirebaseInitialize {
 
-    public Firestore iniciarConexao() {
-        try {
-            FileInputStream serviceAccount
-                    = new FileInputStream("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\connection/trabalholp-a4cc2-firebase-adminsdk-lg0k9-c0acc1c243.json");
+    public Firestore iniciarConexao() throws FileNotFoundException, IOException {
+  
+            FileInputStream serviceAccount = new FileInputStream("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\connection/trabalholp-a4cc2-firebase-adminsdk-lg0k9-c0acc1c243.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setDatabaseUrl("https://trabalholp-a4cc2-default-rtdb.firebaseio.com")
                     .build();
 
+        if(FirebaseApp.getApps().isEmpty()) { //<------- Here
             FirebaseApp.initializeApp(options);
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+        
         return FirestoreClient.getFirestore();
     }
 }

@@ -5,6 +5,7 @@
 package modelos;
 
 import connection.CRUD;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -18,7 +19,7 @@ public class produtoTableModel extends AbstractTableModel {
     private List<Produto> dados = new ArrayList<>();
     private String[] columns = {"NOME","ID"};
 
-    public produtoTableModel() {
+    public produtoTableModel() throws IOException {
         CRUD oi = new CRUD();
         
         Produto[] produtos = oi.getTodosProdutos();
@@ -61,10 +62,5 @@ public class produtoTableModel extends AbstractTableModel {
     public void addRow(Produto p){
         this.dados.add(p);
     }
-    public String getRowIn(int rowIndex){
-        return "abc";
-    }
-    public void fsdfdf(){
-        
-    }
+    
 }

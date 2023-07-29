@@ -4,7 +4,14 @@
  */
 package Telas;
 
+import connection.CRUD;
 import java.awt.Component;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import modelos.Images;
 /**
  *
@@ -28,55 +35,10 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        home = new javax.swing.JDialog();
-        fotoperfil = new javax.swing.JLabel();
-        nomeUsuario = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        fundoHome = new javax.swing.JLabel();
         usuarioFD = new javax.swing.JTextField();
         senhaFD = new javax.swing.JPasswordField();
         button = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
-
-        home.setMinimumSize(new java.awt.Dimension(220, 607));
-        home.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        fotoperfil.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\panda-home.png")); // NOI18N
-        Images img = new Images();
-        fotoperfil.setIcon(img.scalar(fotoperfil, 175, 187));
-        fotoperfil.setMinimumSize(new java.awt.Dimension(100, 100));
-        fotoperfil.setPreferredSize(new java.awt.Dimension(187, 196));
-        home.getContentPane().add(fotoperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 23, 193, 187));
-
-        nomeUsuario.setEditable(false);
-        nomeUsuario.setColumns(10);
-        nomeUsuario.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        nomeUsuario.setRows(1);
-        nomeUsuario.setText("xxxxxxxxxxxxxxxxxxx");
-        nomeUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
-        nomeUsuario.setAlignmentY(Component.CENTER_ALIGNMENT);
-        home.getContentPane().add(nomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
-
-        fundoHome.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\fundohome.png")); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fundoHome)
-                .addGap(0, 0, 0))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fundoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        home.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 1, -1, 610));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -115,7 +77,7 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 170, 20));
 
-        fundo.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\ImagemLogin.png")); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\ImagemLogin.png")); // NOI18N
         getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
 
         pack();
@@ -130,7 +92,24 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaFDActionPerformed
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
-
+CRUD oi;
+       
+        try {
+                        oi = new CRUD();
+            boolean contaExiste = oi.loginVendedor(usuarioFD.getText(), new String(senhaFD.getPassword()));
+            if(contaExiste){
+            Home home = new Home(usuarioFD.getText());
+            home.setVisible(true);
+               dispose();
+              
+            }else{
+JOptionPane.showMessageDialog(this,"Erro no login");
+            }
+            
+        } catch (InterruptedException | ExecutionException | IOException ex) {
+JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
+            System.out.println("não funfo");
+        }
     }//GEN-LAST:event_buttonActionPerformed
 
     /**
@@ -170,12 +149,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button;
-    private javax.swing.JLabel fotoperfil;
     private javax.swing.JLabel fundo;
-    private javax.swing.JLabel fundoHome;
-    private javax.swing.JDialog home;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextArea nomeUsuario;
     private javax.swing.JPasswordField senhaFD;
     private javax.swing.JTextField usuarioFD;
     // End of variables declaration//GEN-END:variables
