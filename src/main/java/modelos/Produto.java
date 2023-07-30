@@ -10,7 +10,7 @@ package modelos;
  */
 public class Produto {
   public static final String NA = "N/A";
-    private String name, id_produto;
+    private String nome, id_produto;
     private double preco;
  private int quntidadeEstoque;
 
@@ -18,19 +18,19 @@ public class Produto {
       
   }
   
-    public Produto(String name, double preco, int quntidadeEstoque, String id_produto) {
-        this.name = name;
+    public Produto(String nome, double preco, int quntidadeEstoque, String id_produto) {
+        this.nome = nome;
         this.preco = preco;
         this.quntidadeEstoque = quntidadeEstoque;
         this.id_produto = id_produto;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public double getPreco() {

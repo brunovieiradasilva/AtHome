@@ -51,51 +51,35 @@ public class CadastroView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        nomeFD.setForeground(new java.awt.Color(51, 51, 51));
+        nomeFD.setForeground(new java.awt.Color(153, 153, 153));
         nomeFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         nomeFD.setOpaque(false);
         nomeFD.setBackground(new java.awt.Color(0,0,0,1));
-        nomeFD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeFDActionPerformed(evt);
-            }
-        });
+       
         getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 210, -1));
 
         usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        usuarioFD.setForeground(new java.awt.Color(51, 51, 51));
+        usuarioFD.setForeground(new java.awt.Color(153, 153, 153));
         usuarioFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
-        usuarioFD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioFDActionPerformed(evt);
-            }
-        });
+      
         getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 210, -1));
 
         senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        senhaFD.setForeground(new java.awt.Color(51, 51, 51));
+        senhaFD.setForeground(new java.awt.Color(153, 153, 153));
         senhaFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         senhaFD.setOpaque(false);
         senhaFD.setBackground(new java.awt.Color(0,0,0,1));
-        senhaFD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaFDActionPerformed(evt);
-            }
-        });
+     
         getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 210, -1));
 
         emailFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        emailFD.setForeground(new java.awt.Color(51, 51, 51));
+        emailFD.setForeground(new java.awt.Color(153, 153, 153));
         emailFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         emailFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
-        emailFD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailFDActionPerformed(evt);
-            }
-        });
+      
         getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 210, -1));
 
         button.setContentAreaFilled(false);
@@ -114,21 +98,6 @@ public class CadastroView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeFDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeFDActionPerformed
-
-    private void usuarioFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioFDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioFDActionPerformed
-
-    private void emailFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailFDActionPerformed
-
-    private void senhaFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaFDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaFDActionPerformed
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         // TODO add your handling code here:

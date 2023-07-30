@@ -48,7 +48,7 @@ public class produtoTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return dados.get(rowIndex).getName();
+                return dados.get(rowIndex).getNome();
             case 1:
                 return dados.get(rowIndex).getId_produto();
             case 2:

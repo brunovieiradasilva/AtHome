@@ -13,7 +13,6 @@
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <Events>
-    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMouseClicked"/>
     <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
   </Events>
   <AuxValues>
@@ -67,7 +66,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -84,7 +83,7 @@
                   </Group>
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="154" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,9 +99,6 @@
           <Border info="null"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesquisaFDActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="pesquisaBtn">
       <Properties>
@@ -122,9 +118,6 @@
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesquisaBtnActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JInternalFrame" name="jInternalFrame1">
       <Properties>
@@ -147,9 +140,6 @@
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jInternalFrame1MouseClicked"/>
-      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
@@ -159,45 +149,37 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                      <Component id="enviarBtn" min="-2" pref="338" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="nomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" pref="88" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="prdNome" alignment="1" min="-2" pref="484" max="-2" attributes="0"/>
-                                          <Component id="prdID" alignment="1" min="-2" pref="484" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" pref="88" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="prdPreco" min="-2" pref="484" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="prdQuantidade" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="prdNome" alignment="1" min="-2" pref="435" max="-2" attributes="0"/>
+                          <Component id="prdID" alignment="1" min="-2" pref="435" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="prdQuantidade" pref="435" max="32767" attributes="0"/>
+                              <Component id="prdPreco" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="nomeLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="prdNome" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -215,16 +197,18 @@
                           <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="prdQuantidade" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="164" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <Component id="enviarBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="nomeLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -235,7 +219,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -246,7 +230,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -257,7 +241,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -271,7 +255,7 @@
                   <Connection code="false" type="code"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -290,9 +274,6 @@
                   <Connection code="false" type="code"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prdPrecoActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="prdPreco.setBackground(new java.awt.Color(0,0,0,1));"/>
               </AuxValues>
@@ -303,7 +284,7 @@
                   <Connection code="false" type="code"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -322,9 +303,6 @@
                   <Connection code="false" type="code"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prdIDActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="prdID.setBackground(new java.awt.Color(0,0,0,1));"/>
               </AuxValues>
@@ -335,7 +313,7 @@
                   <Connection code="false" type="code"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -367,7 +345,7 @@
                   <Connection code="false" type="code"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -386,11 +364,26 @@
                   <Connection code="false" type="code"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prdQuantidadeActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="enviarBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Adicionar Novo Produto"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enviarBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="enviarBtn.setVisible(false);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -411,12 +404,13 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu1">
+            <Menu class="javax.swing.JMenu" name="addBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="adicionar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addBtnMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
               </Events>
             </Menu>
             <Menu class="javax.swing.JMenu" name="removeBtn">
@@ -424,10 +418,6 @@
                 <Property name="text" type="java.lang.String" value="remover"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="removeBtnMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeBtnActionPerformed"/>
-              </Events>
             </Menu>
             <Menu class="javax.swing.JMenu" name="editBtn">
               <Properties>
@@ -435,10 +425,6 @@
                 <Property name="toolTipText" type="java.lang.String" value="informa&#xe7;&#xf5;es do produto"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editBtnMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editBtnActionPerformed"/>
-              </Events>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="editNome">
                   <Properties>

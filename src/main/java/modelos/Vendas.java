@@ -4,35 +4,26 @@
  */
 package modelos;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Bruno
  */
 public class Vendas {
-   private String hora, data, vendedor, produto, valor;
 
-    public Vendas(String hora, String data, String vendedor, String produto, String valor) {
-        this.hora = hora;
-        this.data = data;
+    private String vendedor, produto, valor;
+    private final Timestamp timestamp;
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public Vendas(String vendedor, String produto, String valor) {
+       timestamp = new Timestamp(System.currentTimeMillis());
         this.vendedor = vendedor;
         this.produto = produto;
         this.valor = valor;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 
     public String getVendedor() {
@@ -58,6 +49,5 @@ public class Vendas {
     public void setValor(String valor) {
         this.valor = valor;
     }
-    
-    
+
 }

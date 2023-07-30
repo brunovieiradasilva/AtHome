@@ -18,7 +18,9 @@ import modelos.produtoTableModel;
  * @author Bruno
  */
 public class EstoqueView extends javax.swing.JFrame {
-private HomeView h;
+
+    private HomeView h;
+
     /**
      * Creates new form Estoque
      */
@@ -42,7 +44,7 @@ private HomeView h;
         pesquisaBtn = new javax.swing.JButton();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        nomeLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -50,8 +52,9 @@ private HomeView h;
         prdID = new javax.swing.JTextField();
         prdNome = new javax.swing.JTextField();
         prdQuantidade = new javax.swing.JTextField();
+        enviarBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        addBtn = new javax.swing.JMenu();
         removeBtn = new javax.swing.JMenu();
         editBtn = new javax.swing.JMenu();
         editNome = new javax.swing.JMenuItem();
@@ -67,11 +70,6 @@ private HomeView h;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -81,22 +79,12 @@ private HomeView h;
         pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pesquisaFD.setToolTipText("");
         pesquisaFD.setBorder(null);
-        pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisaFDActionPerformed(evt);
-            }
-        });
 
         pesquisaBtn.setBackground(new java.awt.Color(204, 204, 255));
         pesquisaBtn.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\search.png"));
         pesquisaBtn.setToolTipText("");
         pesquisaBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pesquisaBtn.setBorderPainted(false);
-        pesquisaBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisaBtnActionPerformed(evt);
-            }
-        });
 
         jInternalFrame1.setBackground(new java.awt.Color(255, 255, 255));
         jInternalFrame1.setBorder(null);
@@ -112,31 +100,26 @@ private HomeView h;
         jInternalFrame1.setFocusCycleRoot(false);
         jInternalFrame1.setFocusable(false);
         jInternalFrame1.setVisible(true);
-        jInternalFrame1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jInternalFrame1MouseClicked(evt);
-            }
-        });
         jInternalFrame1.getContentPane().setLayout(new javax.swing.BoxLayout(jInternalFrame1.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Produto:");
+        nomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        nomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        nomeLabel.setText("Produto:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Quantidade:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Preço:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ID:");
 
         prdPreco.setEditable(false);
-        prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdPreco.setForeground(new java.awt.Color(204, 204, 204));
         prdPreco.setText(Produto.NA);
         prdPreco.setToolTipText("");
@@ -144,14 +127,9 @@ private HomeView h;
         prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         prdPreco.setOpaque(false);
         prdPreco.setBackground(new java.awt.Color(0,0,0,1));
-        prdPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prdPrecoActionPerformed(evt);
-            }
-        });
 
         prdID.setEditable(false);
-        prdID.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdID.setForeground(new java.awt.Color(204, 204, 204));
         prdID.setText(Produto.NA);
         prdID.setToolTipText("");
@@ -159,14 +137,9 @@ private HomeView h;
         prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         prdID.setOpaque(false);
         prdID.setBackground(new java.awt.Color(0,0,0,1));
-        prdID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prdIDActionPerformed(evt);
-            }
-        });
 
         prdNome.setEditable(false);
-        prdNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdNome.setForeground(new java.awt.Color(204, 204, 204));
         prdNome.setText(Produto.NA);
         prdNome.setToolTipText("");
@@ -181,7 +154,7 @@ private HomeView h;
         });
 
         prdQuantidade.setEditable(false);
-        prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdQuantidade.setForeground(new java.awt.Color(204, 204, 204));
         prdQuantidade.setText(Produto.NA);
         prdQuantidade.setToolTipText("");
@@ -189,13 +162,19 @@ private HomeView h;
         prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         prdQuantidade.setOpaque(false);
         prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
-        prdQuantidade.addActionListener(new java.awt.event.ActionListener() {
+
+        enviarBtn.setBackground(new java.awt.Color(204, 204, 255));
+        enviarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        enviarBtn.setText("Adicionar Novo Produto");
+        enviarBtn.setToolTipText("");
+        enviarBtn.setVisible(false);
+        enviarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prdQuantidadeActionPerformed(evt);
+                enviarBtnActionPerformed(evt);
             }
         });
 
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(nomeLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -203,41 +182,38 @@ private HomeView h;
         jDesktopPane1.setLayer(prdID, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(prdNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(prdQuantidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(enviarBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(156, 156, 156)
+                .addComponent(enviarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLabel)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(prdNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(prdID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(prdPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(15, 15, 15))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(prdQuantidade)
-                        .addGap(9, 9, 9))))
+                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prdID, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(prdQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                        .addComponent(prdPreco)))
+                .addGap(14, 14, 14))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(45, 45, 45)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -251,7 +227,9 @@ private HomeView h;
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(enviarBtn)
+                .addGap(47, 47, 47))
         );
 
         jInternalFrame1.getContentPane().add(jDesktopPane1);
@@ -261,41 +239,26 @@ private HomeView h;
         jMenuBar1.setToolTipText("Informaçoes do produto");
         jMenuBar1.setFocusable(false);
 
-        jMenu1.setText("adicionar");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+        addBtn.setText("adicionar");
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addBtnMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(addBtn);
 
         removeBtn.setText("remover");
         removeBtn.setEnabled(false);
-        removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                removeBtnMouseClicked(evt);
-            }
-        });
-        removeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeBtnActionPerformed(evt);
-            }
-        });
         jMenuBar1.add(removeBtn);
 
         editBtn.setText("editar");
         editBtn.setToolTipText("informações do produto");
         editBtn.setEnabled(false);
-        editBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editBtnMouseClicked(evt);
-            }
-        });
-        editBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editBtnActionPerformed(evt);
-            }
-        });
 
         editNome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         editNome.setText("Nome");
@@ -396,7 +359,7 @@ private HomeView h;
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(jLabel5)
-                .addGap(12, 12, 12)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -409,7 +372,7 @@ private HomeView h;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -418,11 +381,11 @@ private HomeView h;
 
     private void estoqueTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estoqueTableMouseClicked
         // TODO add your handling code here:
-        
-        prdNome.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(),0).toString());
-        prdID.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(),1).toString());
-        prdQuantidade.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(),2).toString());
-        prdPreco.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(),3).toString());
+
+        prdNome.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 0).toString());
+        prdID.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 1).toString());
+        prdQuantidade.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 2).toString());
+        prdPreco.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 3).toString());
     }//GEN-LAST:event_estoqueTableMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -430,95 +393,70 @@ private HomeView h;
         h.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_addBtnActionPerformed
 
-    private void pesquisaFDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pesquisaFDActionPerformed
+    private void enviarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarBtnActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_pesquisaFDActionPerformed
+        prdNome.setEditable(false);
+        prdID.setEditable(false);
+        prdPreco.setEditable(false);
+        prdQuantidade.setEditable(false);
 
-    private void estoqueListaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_estoqueListaMouseClicked
+        nomeLabel.setText("Produto:");
+
+        prdNome.setBackground(new java.awt.Color(0, 0, 0, 1));
+        prdID.setBackground(new java.awt.Color(0, 0, 0, 1));
+        prdPreco.setBackground(new java.awt.Color(0, 0, 0, 1));
+        prdQuantidade.setBackground(new java.awt.Color(0, 0, 0, 1));
+        enviarBtn.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+        enviarBtn.setVisible(false);
+    }//GEN-LAST:event_enviarBtnActionPerformed
+
+    private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
         // TODO add your handling code here:
+        prdNome.setEditable(true);
+        prdID.setEditable(true);
+        prdPreco.setEditable(true);
+        prdQuantidade.setEditable(true);
 
-    }// GEN-LAST:event_estoqueListaMouseClicked
+        nomeLabel.setText("Novo produto:");
+
+        prdNome.setBackground(new java.awt.Color(204, 204, 204, 205));
+        prdID.setBackground(new java.awt.Color(204, 204, 204, 205));
+        prdPreco.setBackground(new java.awt.Color(204, 204, 204, 205));
+        prdQuantidade.setBackground(new java.awt.Color(204, 204, 204, 205));
+        enviarBtn.setBackground(new java.awt.Color(204, 204, 204, 205));
+        enviarBtn.setVisible(true);
+
+    }//GEN-LAST:event_addBtnMouseClicked
+
+    private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prdNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prdNomeActionPerformed
 
     private void editNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editNomeActionPerformed
         limparLista(); // TODO add your handling code here:
     }// GEN-LAST:event_editNomeActionPerformed
-
-    private void addEstoqueActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addEstoqueActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_addEstoqueActionPerformed
-
-    private void estoqueListaFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_estoqueListaFocusGained
-        // TODO add your handling code here:
-    }// GEN-LAST:event_estoqueListaFocusGained
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
-
-    }// GEN-LAST:event_formMouseClicked
-
-    private void jInternalFrame1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jInternalFrame1MouseClicked
-        // TODO add your handling code here:
-
-    }// GEN-LAST:event_jInternalFrame1MouseClicked
-
-    private void estoqueListaMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_estoqueListaMouseEntered
-        // TODO add your handling code here:
-    }// GEN-LAST:event_estoqueListaMouseEntered
-
-    private void estoqueListaMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_estoqueListaMouseExited
-        // TODO add your handling code here:
-    }// GEN-LAST:event_estoqueListaMouseExited
-
-    private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_removeBtnMouseClicked
-        // TODO add your handling code here:
-
-    }// GEN-LAST:event_removeBtnMouseClicked
-
-    private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_editBtnMouseClicked
-        // TODO add your handling code here:
-
-    }// GEN-LAST:event_editBtnMouseClicked
-
-    private void estoqueListaValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_estoqueListaValueChanged
-        // TODO add your handling code here:
-    }// GEN-LAST:event_estoqueListaValueChanged
-
-    private void prdPrecoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_prdPrecoActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_prdPrecoActionPerformed
-
-    private void prdIDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_prdIDActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_prdIDActionPerformed
-
-    private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_prdNomeActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_prdNomeActionPerformed
-
-    private void prdQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_prdQuantidadeActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_prdQuantidadeActionPerformed
 
     private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pesquisaBtnActionPerformed
         // TODO add your handling code here:
         if (pesquisaBox.getSelectedItem() != null && !pesquisaFD.getText().equals("")) {
             if (pesquisaBox.getSelectedItem().equals("NOME")) {
                 int i = 0;
-                  while (i < estoqueTable.getModel().getRowCount()) {
+                while (i < estoqueTable.getModel().getRowCount()) {
                     Produto p = new Produto();
-                 
+
                     i++;
                 }
-                
+
             } else {
                 int i = 0;
                 while (i < estoqueTable.getModel().getRowCount()) {
                     Produto p = new Produto();
-                 
+
                     i++;
                 }
             }
@@ -588,23 +526,24 @@ private HomeView h;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu addBtn;
     private javax.swing.JMenu editBtn;
     private javax.swing.JMenuItem editId;
     private javax.swing.JMenuItem editNome;
     private javax.swing.JMenuItem editQuanti;
+    private javax.swing.JButton enviarBtn;
     private javax.swing.JTable estoqueTable;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel nomeLabel;
     private java.awt.Choice pesquisaBox;
     private javax.swing.JButton pesquisaBtn;
     private javax.swing.JTextField pesquisaFD;

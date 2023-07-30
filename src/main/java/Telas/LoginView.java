@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
+import modelos.Vendedor;
 
 /**
  *
@@ -43,7 +44,7 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        usuarioFD.setForeground(new java.awt.Color(51, 51, 51));
+        usuarioFD.setForeground(new java.awt.Color(153, 153, 153));
         usuarioFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
@@ -60,7 +61,7 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 210, -1));
 
         senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        senhaFD.setForeground(new java.awt.Color(51, 51, 51));
+        senhaFD.setForeground(new java.awt.Color(153, 153, 153));
         senhaFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         senhaFD.setOpaque(false);
         senhaFD.setBackground(new java.awt.Color(0,0,0,1));
@@ -112,7 +113,7 @@ public class LoginView extends javax.swing.JFrame {
             oi = new CRUD();
             boolean contaExiste = oi.loginVendedor(usuarioFD.getText(), new String(senhaFD.getPassword()));
             if (contaExiste) {
-                HomeView home = new HomeView(usuarioFD.getText());
+                HomeView home = new HomeView((Vendedor) oi.getPorID("vendedor",usuarioFD.getText()));
                 home.setVisible(true);
                 dispose();
 
@@ -122,8 +123,7 @@ public class LoginView extends javax.swing.JFrame {
 
         } catch (InterruptedException | ExecutionException | IOException ex) {
             JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
-            System.out.println("não funfo");
-        }
+        } 
     }//GEN-LAST:event_buttonActionPerformed
 
     private void usuarioFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioFDKeyPressed
