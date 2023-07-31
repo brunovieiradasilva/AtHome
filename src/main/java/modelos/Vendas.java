@@ -3,24 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelos;
-
-import java.sql.Timestamp;
-
 /**
  *
  * @author Bruno
  */
+import com.google.cloud.Timestamp;
 public class Vendas {
 
     private String vendedor, produto, valor;
-    private final Timestamp timestamp;
+    private final Timestamp timestamp = null;
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
 
     public Vendas(String vendedor, String produto, String valor) {
-       timestamp = new Timestamp(System.currentTimeMillis());
+   
         this.vendedor = vendedor;
         this.produto = produto;
         this.valor = valor;

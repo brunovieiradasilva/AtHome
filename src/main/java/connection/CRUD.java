@@ -5,6 +5,7 @@
 package connection;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -13,7 +14,9 @@ import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.database.ServerValue;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import modelos.*;
@@ -63,6 +66,15 @@ public class CRUD {
         }
     }
     
+     public boolean add(Vendas venda) {
+        try {
+            ApiFuture<DocumentReference> addedDocRef = db.collection("estoque").add(venda);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
     public boolean delete(String colecao, String ID) {
         try {
             
@@ -101,6 +113,7 @@ public class CRUD {
             CollectionReference vend = db.collection("vendedor");
             Query query = vend.whereEqualTo("usuario", usuario);
             ApiFuture<QuerySnapshot> querySnapshot = query.get();
+            Date date = new Date();
             
             if (querySnapshot.get().getDocuments().get(0).get("senha").equals(senha)) {
                 return true;

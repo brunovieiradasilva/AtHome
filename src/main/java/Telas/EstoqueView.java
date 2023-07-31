@@ -7,11 +7,15 @@ package Telas;
 import connection.CRUD;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.io.IOException;
+import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelos.Produto;
-import modelos.produtoTableModel;
 
 /**
  *
@@ -26,6 +30,7 @@ public class EstoqueView extends javax.swing.JFrame {
      */
     public EstoqueView(HomeView home) {
         h = home;
+
         initComponents();
 
     }
@@ -64,8 +69,8 @@ public class EstoqueView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         pesquisaBox = new java.awt.Choice();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        estoqueTable = new javax.swing.JTable();
+        panel = new javax.swing.JScrollPane();
+        estoqueList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -254,6 +259,16 @@ public class EstoqueView extends javax.swing.JFrame {
 
         removeBtn.setText("remover");
         removeBtn.setEnabled(false);
+        removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeBtnMouseClicked(evt);
+            }
+        });
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(removeBtn);
 
         editBtn.setText("editar");
@@ -307,36 +322,22 @@ public class EstoqueView extends javax.swing.JFrame {
         pesquisaBox.add("NOME");
         pesquisaBox.add("ID");
 
-        produtoTableModel tableModel = null;
-        try{
-            tableModel = new produtoTableModel();
-        }catch(Exception e){
-
-        }
-        estoqueTable.setModel(tableModel);
-        estoqueTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                estoqueTableMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(estoqueTable);
-        if (estoqueTable.getColumnModel().getColumnCount() > 0) {
-            estoqueTable.getColumnModel().getColumn(0).setResizable(false);
-            estoqueTable.getColumnModel().getColumn(1).setResizable(false);
-        }
+        ListModel<Produto> listModel = new DefaultListModel<>();
+        estoqueList.setModel(listModel);
+        panel.setViewportView(estoqueList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -359,34 +360,27 @@ public class EstoqueView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(jLabel5)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pesquisaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(pesquisaFD, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7))
-                            .addComponent(pesquisaBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pesquisaBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pesquisaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void estoqueTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estoqueTableMouseClicked
-        // TODO add your handling code here:
-
-        prdNome.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 0).toString());
-        prdID.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 1).toString());
-        prdQuantidade.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 2).toString());
-        prdPreco.setText(estoqueTable.getModel().getValueAt(estoqueTable.getSelectedRow(), 3).toString());
-    }//GEN-LAST:event_estoqueTableMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -424,11 +418,11 @@ public class EstoqueView extends javax.swing.JFrame {
 
         nomeLabel.setText("Novo produto:");
 
-        prdNome.setBackground(new java.awt.Color(204, 204, 204, 205));
-        prdID.setBackground(new java.awt.Color(204, 204, 204, 205));
-        prdPreco.setBackground(new java.awt.Color(204, 204, 204, 205));
-        prdQuantidade.setBackground(new java.awt.Color(204, 204, 204, 205));
-        enviarBtn.setBackground(new java.awt.Color(204, 204, 204, 205));
+        prdNome.setBackground(new java.awt.Color(204, 204, 204, 225));
+        prdID.setBackground(new java.awt.Color(204, 204, 204, 225));
+        prdPreco.setBackground(new java.awt.Color(204, 204, 204, 225));
+        prdQuantidade.setBackground(new java.awt.Color(204, 204, 204, 225));
+        enviarBtn.setBackground(new java.awt.Color(204, 204, 204, 225));
         enviarBtn.setVisible(true);
 
     }//GEN-LAST:event_addBtnMouseClicked
@@ -436,6 +430,29 @@ public class EstoqueView extends javax.swing.JFrame {
     private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prdNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_prdNomeActionPerformed
+
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
+        // TODO add your handling code here:
+        limparLista();
+        JOptionPane.showMessageDialog(this, "Excluir item selecionado?", "Excluir Item", HEIGHT);
+
+    }//GEN-LAST:event_removeBtnActionPerformed
+
+    private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
+        // TODO add your handling code here:
+        if (removeBtn.isEnabled()) {
+            CRUD oi;
+            try {
+                oi = new CRUD();
+                oi.delete("estoque", "");
+
+                limparLista();
+                JOptionPane.showMessageDialog(this, "Excluir item selecionado?", "Excluir Item", HEIGHT);
+
+            } catch (IOException ex) {
+            }
+        }
+    }//GEN-LAST:event_removeBtnMouseClicked
 
     private void editNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editNomeActionPerformed
         limparLista(); // TODO add your handling code here:
@@ -445,28 +462,11 @@ public class EstoqueView extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (pesquisaBox.getSelectedItem() != null && !pesquisaFD.getText().equals("")) {
             if (pesquisaBox.getSelectedItem().equals("NOME")) {
-                int i = 0;
-                while (i < estoqueTable.getModel().getRowCount()) {
-                    Produto p = new Produto();
 
-                    i++;
-                }
-
-            } else {
-                int i = 0;
-                while (i < estoqueTable.getModel().getRowCount()) {
-                    Produto p = new Produto();
-
-                    i++;
-                }
             }
+
         }
     }// GEN-LAST:event_pesquisaBtnActionPerformed
-
-    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_removeBtnActionPerformed
-        // TODO add your handling code here:
-        limparLista();
-    }// GEN-LAST:event_removeBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
@@ -482,7 +482,7 @@ public class EstoqueView extends javax.swing.JFrame {
     }// GEN-LAST:event_editQuantiActionPerformed
 
     private void limparLista() {
-        estoqueTable.clearSelection();
+        estoqueList.clearSelection();
     }
 
     /**
@@ -532,7 +532,7 @@ public class EstoqueView extends javax.swing.JFrame {
     private javax.swing.JMenuItem editNome;
     private javax.swing.JMenuItem editQuanti;
     private javax.swing.JButton enviarBtn;
-    private javax.swing.JTable estoqueTable;
+    private javax.swing.JList<Produto> estoqueList;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel2;
@@ -542,8 +542,8 @@ public class EstoqueView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nomeLabel;
+    private javax.swing.JScrollPane panel;
     private java.awt.Choice pesquisaBox;
     private javax.swing.JButton pesquisaBtn;
     private javax.swing.JTextField pesquisaFD;

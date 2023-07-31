@@ -64,13 +64,11 @@ public class HomeView extends javax.swing.JFrame {
         compraBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Compra.png")); // NOI18N
         compraBtn.setContentAreaFilled(false);
         compraBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
- 
         getContentPane().add(compraBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
 
         cadClienteBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\cadClie.png")); // NOI18N
         cadClienteBtn.setContentAreaFilled(false);
         cadClienteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         getContentPane().add(cadClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
         cadVendedorBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\cadVend.png")); // NOI18N
@@ -94,7 +92,6 @@ public class HomeView extends javax.swing.JFrame {
         String[] nome = user.getNome().split(" ");
         usuario.setText(nome[0] + " " + nome[1]);
         usuario.setHorizontalAlignment(JTextField.CENTER);
-   
         getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 170, 30));
 
         fotoperfil.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\panda-home.png")); // NOI18N
