@@ -44,7 +44,6 @@ public class CadastroView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro vendedor - At Home");
-        setPreferredSize(new java.awt.Dimension(1280, 800));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -54,35 +53,35 @@ public class CadastroView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nomeFD.setForeground(new java.awt.Color(255, 255, 255));
+        nomeFD.setForeground(new java.awt.Color(51, 51, 51));
         nomeFD.setBorder(null);
         nomeFD.setOpaque(false);
         nomeFD.setBackground(new java.awt.Color(0,0,0,1));
         getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 294, 310, 30));
 
         cpfFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cpfFD.setForeground(new java.awt.Color(255, 255, 255));
+        cpfFD.setForeground(new java.awt.Color(51, 51, 51));
         cpfFD.setBorder(null);
         cpfFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
         getContentPane().add(cpfFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 310, 30));
 
         usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        usuarioFD.setForeground(new java.awt.Color(255, 255, 255));
+        usuarioFD.setForeground(new java.awt.Color(51, 51, 51));
         usuarioFD.setBorder(null);
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
         getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 374, 310, 30));
 
         senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        senhaFD.setForeground(new java.awt.Color(255, 255, 255));
+        senhaFD.setForeground(new java.awt.Color(51, 51, 51));
         senhaFD.setBorder(null);
         senhaFD.setOpaque(false);
         senhaFD.setBackground(new java.awt.Color(0,0,0,1));
         getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 624, 310, 30));
 
         emailFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        emailFD.setForeground(new java.awt.Color(255, 255, 255));
+        emailFD.setForeground(new java.awt.Color(51, 51, 51));
         emailFD.setBorder(null);
         emailFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));

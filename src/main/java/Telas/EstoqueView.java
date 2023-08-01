@@ -17,6 +17,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelos.Produto;
@@ -133,12 +134,12 @@ public class EstoqueView extends javax.swing.JFrame {
 
             getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 186, 270, 490));
 
-            pesquisaFD.setEditable(false);
             pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             pesquisaFD.setForeground(new java.awt.Color(51, 51, 51));
             pesquisaFD.setToolTipText("");
             pesquisaFD.setBorder(null);
             pesquisaFD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            pesquisaFD.setAlignmentY(JTextField.CENTER);
             pesquisaFD.setOpaque(false);
             pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
             pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +147,7 @@ public class EstoqueView extends javax.swing.JFrame {
                     pesquisaFDActionPerformed(evt);
                 }
             });
-            getContentPane().add(pesquisaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(1085, 110, 160, 20));
+            getContentPane().add(pesquisaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(1085, 100, 160, 30));
 
             prdID.setEditable(false);
             prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

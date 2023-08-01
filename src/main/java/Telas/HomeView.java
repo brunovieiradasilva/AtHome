@@ -86,13 +86,12 @@ public class HomeView extends javax.swing.JFrame {
         usuario.setBackground(new java.awt.Color(0,0,0,1));
         String[] nome = user.getNome().split(" ");
         usuario.setText(nome[0]);
-        usuario.setHorizontalAlignment(JTextField.CENTER);
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 120, 30));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 120, 30));
 
         fundoHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Home-page.png")); // NOI18N
         getContentPane().add(fundoHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
