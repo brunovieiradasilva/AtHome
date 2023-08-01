@@ -9,9 +9,13 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.HEIGHT;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -45,19 +49,16 @@ public class EstoqueView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pesquisaFD = new javax.swing.JTextField();
         pesquisaBtn = new javax.swing.JButton();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        nomeLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        prdPreco = new javax.swing.JTextField();
-        prdID = new javax.swing.JTextField();
+        pesquisaBox = new java.awt.Choice();
         prdNome = new javax.swing.JTextField();
+        panel = new javax.swing.JScrollPane();
+        estoqueList = new javax.swing.JList<>();
+        pesquisaFD = new javax.swing.JTextField();
+        prdID = new javax.swing.JTextField();
+        prdPreco = new javax.swing.JTextField();
         prdQuantidade = new javax.swing.JTextField();
-        enviarBtn = new javax.swing.JButton();
+        fundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         addBtn = new javax.swing.JMenu();
         removeBtn = new javax.swing.JMenu();
@@ -65,14 +66,9 @@ public class EstoqueView extends javax.swing.JFrame {
         editNome = new javax.swing.JMenuItem();
         editId = new javax.swing.JMenuItem();
         editQuanti = new javax.swing.JMenuItem();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        pesquisaBox = new java.awt.Choice();
-        panel = new javax.swing.JScrollPane();
-        estoqueList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Estoque - At Home");
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -80,362 +76,206 @@ public class EstoqueView extends javax.swing.JFrame {
                 formWindowClosed(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        pesquisaFD.setToolTipText("");
-        pesquisaFD.setBorder(null);
-
-        pesquisaBtn.setBackground(new java.awt.Color(204, 204, 255));
+        pesquisaBtn.setBackground(new java.awt.Color(204, 204, 255,1));
         pesquisaBtn.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\search.png"));
         pesquisaBtn.setToolTipText("");
         pesquisaBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pesquisaBtn.setBorderPainted(false);
+        pesquisaBtn.setContentAreaFilled(false);
+        pesquisaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(pesquisaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 100, 140, 34));
 
-        jInternalFrame1.setBackground(new java.awt.Color(255, 255, 255));
-        jInternalFrame1.setBorder(null);
-        jInternalFrame1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
-        Icon ic = new ImageIcon(icon);
-        jInternalFrame1.setFrameIcon(ic);
-        BasicInternalFrameUI bui = (BasicInternalFrameUI) jInternalFrame1.getUI();
-        bui.setNorthPane(null);
-        jInternalFrame1.setForeground(new java.awt.Color(255, 255, 255));
-        jInternalFrame1.setTitle("Informações do produto");
-        jInternalFrame1.setEnabled(false);
-        jInternalFrame1.setFocusCycleRoot(false);
-        jInternalFrame1.setFocusable(false);
-        jInternalFrame1.setVisible(true);
-        jInternalFrame1.getContentPane().setLayout(new javax.swing.BoxLayout(jInternalFrame1.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
-
-        nomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        nomeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        nomeLabel.setText("Produto:");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Quantidade:");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Preço:");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("ID:");
-
-        prdPreco.setEditable(false);
-        prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        prdPreco.setForeground(new java.awt.Color(204, 204, 204));
-        prdPreco.setText(Produto.NA);
-        prdPreco.setToolTipText("");
-        prdPreco.setBorder(null);
-        prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdPreco.setOpaque(false);
-        prdPreco.setBackground(new java.awt.Color(0,0,0,1));
-
-        prdID.setEditable(false);
-        prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        prdID.setForeground(new java.awt.Color(204, 204, 204));
-        prdID.setText(Produto.NA);
-        prdID.setToolTipText("");
-        prdID.setBorder(null);
-        prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdID.setOpaque(false);
-        prdID.setBackground(new java.awt.Color(0,0,0,1));
+        pesquisaBox.add("NOME");
+        pesquisaBox.add("ID");
+        pesquisaBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        pesquisaBox.setForeground(new java.awt.Color(51, 51, 51));
+        getContentPane().add(pesquisaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 100, 180, 34));
 
         prdNome.setEditable(false);
         prdNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        prdNome.setForeground(new java.awt.Color(204, 204, 204));
+        prdNome.setForeground(new java.awt.Color(51, 51, 51));
         prdNome.setText(Produto.NA);
         prdNome.setToolTipText("");
         prdNome.setBorder(null);
         prdNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         prdNome.setOpaque(false);
-        prdNome.setBackground(new java.awt.Color(0,0,0,1));
+        pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
         prdNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prdNomeActionPerformed(evt);
             }
         });
+        getContentPane().add(prdNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 230, 250, 30));
 
-        prdQuantidade.setEditable(false);
-        prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        prdQuantidade.setForeground(new java.awt.Color(204, 204, 204));
-        prdQuantidade.setText(Produto.NA);
-        prdQuantidade.setToolTipText("");
-        prdQuantidade.setBorder(null);
-        prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdQuantidade.setOpaque(false);
-        prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
-
-        enviarBtn.setBackground(new java.awt.Color(204, 204, 255));
-        enviarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        enviarBtn.setText("Adicionar Novo Produto");
-        enviarBtn.setToolTipText("");
-        enviarBtn.setVisible(false);
-        enviarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enviarBtnActionPerformed(evt);
-            }
-        });
-
-        jDesktopPane1.setLayer(nomeLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(prdPreco, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(prdID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(prdNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(prdQuantidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(enviarBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(enviarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeLabel)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prdID, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(prdQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                        .addComponent(prdPreco)))
-                .addGap(14, 14, 14))
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prdID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prdPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(enviarBtn)
-                .addGap(47, 47, 47))
-        );
-
-        jInternalFrame1.getContentPane().add(jDesktopPane1);
-
-        jMenuBar1.setBackground(new java.awt.Color(204, 255, 102));
-        jMenuBar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jMenuBar1.setToolTipText("Informaçoes do produto");
-        jMenuBar1.setFocusable(false);
-
-        addBtn.setText("adicionar");
-        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addBtnMouseClicked(evt);
-            }
-        });
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(addBtn);
-
-        removeBtn.setText("remover");
-        removeBtn.setEnabled(false);
-        removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                removeBtnMouseClicked(evt);
-            }
-        });
-        removeBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeBtnActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(removeBtn);
-
-        editBtn.setText("editar");
-        editBtn.setToolTipText("informações do produto");
-        editBtn.setEnabled(false);
-
-        editNome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        editNome.setText("Nome");
-        editNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editNomeActionPerformed(evt);
-            }
-        });
-        editBtn.add(editNome);
-
-        editId.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        editId.setText("ID");
-        editId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editIdActionPerformed(evt);
-            }
-        });
-        editBtn.add(editId);
-
-        editQuanti.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        editQuanti.setText("quantidade");
-        editQuanti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editQuantiActionPerformed(evt);
-            }
-        });
-        editBtn.add(editQuanti);
-
-        jMenuBar1.add(editBtn);
-
-        jInternalFrame1.setJMenuBar(jMenuBar1);
-
-        jLabel5.setBackground(new java.awt.Color(255, 102, 102));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel5.setText("  Itens em estoque");
-        jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 0, new java.awt.Color(0, 51, 51)));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel6.setText("por:");
-        jLabel6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 51, 51)));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel7.setText("igual a:");
-        jLabel7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 51, 51)));
-
-        pesquisaBox.add("NOME");
-        pesquisaBox.add("ID");
-
-        ListModel<Produto> listModel = new DefaultListModel<>();
+        DefaultListModel<Produto> listModel = new DefaultListModel<>();
+        estoqueList.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         estoqueList.setModel(listModel);
-        panel.setViewportView(estoqueList);
+        CRUD oi;
+        try{
+            oi = new CRUD();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(pesquisaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(25, 25, 25)
-                        .addComponent(pesquisaBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(25, 25, 25)
-                        .addComponent(pesquisaFD, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(jLabel5)
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(pesquisaFD, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7))
-                            .addComponent(pesquisaBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pesquisaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10))
-        );
+            for(Produto produto: oi.getTodosProdutos()){
+                listModel.addElement(produto);
+            }}catch(Exception e){
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+            }
+
+            DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
+            estoqueList.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    estoqueListMouseClicked(evt);
+                }
+            });
+            panel.setViewportView(estoqueList);
+
+            getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 186, 270, 490));
+
+            pesquisaFD.setEditable(false);
+            pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            pesquisaFD.setForeground(new java.awt.Color(51, 51, 51));
+            pesquisaFD.setToolTipText("");
+            pesquisaFD.setBorder(null);
+            pesquisaFD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            pesquisaFD.setOpaque(false);
+            pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
+            pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    pesquisaFDActionPerformed(evt);
+                }
+            });
+            getContentPane().add(pesquisaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(1085, 110, 160, 20));
+
+            prdID.setEditable(false);
+            prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            prdID.setForeground(new java.awt.Color(51, 51, 51));
+            prdID.setText(Produto.NA);
+            prdID.setToolTipText("");
+            prdID.setBorder(null);
+            prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            prdID.setOpaque(false);
+            prdID.setBackground(new java.awt.Color(0,0,0,1));
+            getContentPane().add(prdID, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 260, 30));
+
+            prdPreco.setEditable(false);
+            prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            prdPreco.setForeground(new java.awt.Color(51, 51, 51));
+            prdPreco.setText(Produto.NA);
+            prdPreco.setToolTipText("");
+            prdPreco.setBorder(null);
+            prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            prdPreco.setOpaque(false);
+            prdPreco.setBackground(new java.awt.Color(0,0,0,1));
+            getContentPane().add(prdPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 260, 40));
+
+            prdQuantidade.setEditable(false);
+            prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            prdQuantidade.setForeground(new java.awt.Color(51, 51, 51));
+            prdQuantidade.setText(Produto.NA);
+            prdQuantidade.setToolTipText("");
+            prdQuantidade.setBorder(null);
+            prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            prdQuantidade.setOpaque(false);
+            prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
+            getContentPane().add(prdQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 260, 30));
+
+            fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Estoque-page.png")); // NOI18N
+            getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+            jMenuBar1.setBackground(new java.awt.Color(204, 255, 102));
+            jMenuBar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+            jMenuBar1.setToolTipText("Informaçoes do produto");
+            jMenuBar1.setFocusable(false);
+
+            addBtn.setText("adicionar");
+            addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    addBtnMouseClicked(evt);
+                }
+            });
+            addBtn.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    addBtnActionPerformed(evt);
+                }
+            });
+            jMenuBar1.add(addBtn);
+
+            removeBtn.setText("remover");
+            removeBtn.setEnabled(false);
+            removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    removeBtnMouseClicked(evt);
+                }
+            });
+            removeBtn.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    removeBtnActionPerformed(evt);
+                }
+            });
+            jMenuBar1.add(removeBtn);
+
+            editBtn.setText("editar");
+            editBtn.setToolTipText("informações do produto");
+            editBtn.setEnabled(false);
+
+            editNome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+            editNome.setText("Nome");
+            editNome.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    editNomeActionPerformed(evt);
+                }
+            });
+            editBtn.add(editNome);
+
+            editId.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+            editId.setText("ID");
+            editId.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    editIdActionPerformed(evt);
+                }
+            });
+            editBtn.add(editId);
+
+            editQuanti.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+            editQuanti.setText("quantidade");
+            editQuanti.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    editQuantiActionPerformed(evt);
+                }
+            });
+            editBtn.add(editQuanti);
+
+            jMenuBar1.add(editBtn);
+
+            setJMenuBar(jMenuBar1);
+
+            pack();
+            setLocationRelativeTo(null);
+        }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
         h.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+    private void editQuantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editQuantiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addBtnActionPerformed
+    }//GEN-LAST:event_editQuantiActionPerformed
 
-    private void enviarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarBtnActionPerformed
+    private void editIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIdActionPerformed
         // TODO add your handling code here:
-        prdNome.setEditable(false);
-        prdID.setEditable(false);
-        prdPreco.setEditable(false);
-        prdQuantidade.setEditable(false);
+    }//GEN-LAST:event_editIdActionPerformed
 
-        nomeLabel.setText("Produto:");
-
-        prdNome.setBackground(new java.awt.Color(0, 0, 0, 1));
-        prdID.setBackground(new java.awt.Color(0, 0, 0, 1));
-        prdPreco.setBackground(new java.awt.Color(0, 0, 0, 1));
-        prdQuantidade.setBackground(new java.awt.Color(0, 0, 0, 1));
-        enviarBtn.setBackground(new java.awt.Color(0, 0, 0, 1));
-
-        enviarBtn.setVisible(false);
-    }//GEN-LAST:event_enviarBtnActionPerformed
-
-    private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
+    private void editNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNomeActionPerformed
         // TODO add your handling code here:
-        prdNome.setEditable(true);
-        prdID.setEditable(true);
-        prdPreco.setEditable(true);
-        prdQuantidade.setEditable(true);
-
-        nomeLabel.setText("Novo produto:");
-
-        prdNome.setBackground(new java.awt.Color(204, 204, 204, 225));
-        prdID.setBackground(new java.awt.Color(204, 204, 204, 225));
-        prdPreco.setBackground(new java.awt.Color(204, 204, 204, 225));
-        prdQuantidade.setBackground(new java.awt.Color(204, 204, 204, 225));
-        enviarBtn.setBackground(new java.awt.Color(204, 204, 204, 225));
-        enviarBtn.setVisible(true);
-
-    }//GEN-LAST:event_addBtnMouseClicked
-
-    private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prdNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prdNomeActionPerformed
+    }//GEN-LAST:event_editNomeActionPerformed
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
         limparLista();
         JOptionPane.showMessageDialog(this, "Excluir item selecionado?", "Excluir Item", HEIGHT);
-
     }//GEN-LAST:event_removeBtnActionPerformed
 
     private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
@@ -454,13 +294,46 @@ public class EstoqueView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_removeBtnMouseClicked
 
-    private void editNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editNomeActionPerformed
-        limparLista(); // TODO add your handling code here:
-    }// GEN-LAST:event_editNomeActionPerformed
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
+        // TODO add your handling code here:
+        prdNome.setEditable(true);
+        prdID.setEditable(true);
+        prdPreco.setEditable(true);
+        prdQuantidade.setEditable(true);
+
+        prdNome.setBackground(new java.awt.Color(204, 204, 204, 225));
+        prdID.setBackground(new java.awt.Color(204, 204, 204, 225));
+        prdPreco.setBackground(new java.awt.Color(204, 204, 204, 225));
+        prdQuantidade.setBackground(new java.awt.Color(204, 204, 204, 225));
+        
+    }//GEN-LAST:event_addBtnMouseClicked
+
+    private void pesquisaFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesquisaFDActionPerformed
+
+    private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prdNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prdNomeActionPerformed
+
+    private void estoqueListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estoqueListMouseClicked
+        // TODO add your handling code here:
+        Produto p = estoqueList.getSelectedValue();
+          prdNome.setText(p.getNome());
+        prdID.setText(p.getId_produto());
+        prdPreco.setText(Double.toString(p.getPreco()));
+        prdQuantidade.setText(Integer.toString(p.getQuntidadeEstoque()));
+    }//GEN-LAST:event_estoqueListMouseClicked
+
+  
 
     private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pesquisaBtnActionPerformed
         // TODO add your handling code here:
-        if (pesquisaBox.getSelectedItem() != null && !pesquisaFD.getText().equals("")) {
+        if (pesquisaBox.getSelectedItem() != null && !prdNome.getText().equals("")) {
             if (pesquisaBox.getSelectedItem().equals("NOME")) {
 
             }
@@ -473,13 +346,7 @@ public class EstoqueView extends javax.swing.JFrame {
         limparLista();
     }// GEN-LAST:event_editBtnActionPerformed
 
-    private void editIdActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editIdActionPerformed
-        limparLista(); // TODO add your handling code here:
-    }// GEN-LAST:event_editIdActionPerformed
-
-    private void editQuantiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editQuantiActionPerformed
-        limparLista(); // TODO add your handling code here:
-    }// GEN-LAST:event_editQuantiActionPerformed
+   
 
     private void limparLista() {
         estoqueList.clearSelection();
@@ -531,18 +398,9 @@ public class EstoqueView extends javax.swing.JFrame {
     private javax.swing.JMenuItem editId;
     private javax.swing.JMenuItem editNome;
     private javax.swing.JMenuItem editQuanti;
-    private javax.swing.JButton enviarBtn;
     private javax.swing.JList<Produto> estoqueList;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel fundo;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel nomeLabel;
     private javax.swing.JScrollPane panel;
     private java.awt.Choice pesquisaBox;
     private javax.swing.JButton pesquisaBtn;

@@ -44,7 +44,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 800));
+        setTitle("Cadastro cliente - At Home");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -119,19 +119,19 @@ public class CadastroClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             CRUD oi = new CRUD();
-            boolean checkIfUsuarioExist = oi.checkIfExist("vendedor", cpfFD.getText()), checkEmail = true;
+            boolean checkIfClienteExist = oi.checkIfExist("cliente", cpfFD.getText()), checkEmail = true;
 
             //vendo se o meail está no formato certo
             checkEmail = emailFD.getText().contains("@") && (emailFD.getText().endsWith(".com") || emailFD.getText().endsWith(".br"));
 
-            if (!checkIfUsuarioExist && checkEmail) {
+            if (!checkIfClienteExist && checkEmail) {
                 Cliente cliente = new Cliente(nomeFD.getText(),cpfFD.getText(),emailFD.getText(),rgFD.getText(), enderecoFD.getText());
                 oi.add(cliente);
                 dispose();
-                JOptionPane.showMessageDialog(this, "Vendedor adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
+                JOptionPane.showMessageDialog(this, "Cliente adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
             } else {
-                if (checkIfUsuarioExist) {
-                    JOptionPane.showMessageDialog(this, "Usuario já existe.", "Erro no cadastro", HEIGHT);
+                if (checkIfClienteExist) {
+                    JOptionPane.showMessageDialog(this, "Cliente já existe.", "Erro no cadastro", HEIGHT);
 
                 } else if (!checkEmail) {
                     JOptionPane.showMessageDialog(this, "Email não corresponde ao formato adequado.", "Erro no cadastro", HEIGHT);

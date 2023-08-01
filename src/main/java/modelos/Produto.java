@@ -9,15 +9,16 @@ package modelos;
  * @author Bruno
  */
 public class Produto {
-  public static final String NA = "N/A";
+
+    public static final String NA = "Selecione um produto";
     private String nome, id_produto;
     private double preco;
- private int quntidadeEstoque;
+    private int quntidadeEstoque;
 
-  public Produto(){
-      
-  }
-  
+    public Produto() {
+
+    }
+
     public Produto(String nome, double preco, int quntidadeEstoque, String id_produto) {
         this.nome = nome;
         this.preco = preco;
@@ -41,9 +42,6 @@ public class Produto {
         this.preco = preco;
     }
 
-   
- 
-
     public int getQuntidadeEstoque() {
         return quntidadeEstoque;
     }
@@ -59,6 +57,11 @@ public class Produto {
     public void setId_produto(String id_produto) {
         this.id_produto = id_produto;
     }
-  
- 
+    
+    @Override
+    
+    public String toString(){
+        return nome;
+    }
+
 }

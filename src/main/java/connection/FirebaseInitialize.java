@@ -22,7 +22,7 @@ public class FirebaseInitialize {
 
     public Firestore iniciarConexao() throws FileNotFoundException, IOException {
   
-            FileInputStream serviceAccount = new FileInputStream("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\connection/trabalholp-a4cc2-firebase-adminsdk-lg0k9-c0acc1c243.json");
+            FileInputStream serviceAccount = new FileInputStream("src\\main\\java\\connection/trabalholp-a4cc2-firebase-adminsdk-lg0k9-c0acc1c243.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

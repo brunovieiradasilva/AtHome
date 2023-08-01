@@ -39,12 +39,13 @@ public class LoginView extends javax.swing.JFrame {
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login  - At Home");
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        usuarioFD.setForeground(new java.awt.Color(153, 153, 153));
+        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usuarioFD.setForeground(new java.awt.Color(51, 51, 51));
         usuarioFD.setBorder(null);
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
@@ -60,8 +61,8 @@ public class LoginView extends javax.swing.JFrame {
         });
         getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 374, 330, 40));
 
-        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        senhaFD.setForeground(new java.awt.Color(153, 153, 153));
+        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        senhaFD.setForeground(new java.awt.Color(51, 51, 51));
         senhaFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         senhaFD.setOpaque(false);
         senhaFD.setBackground(new java.awt.Color(0,0,0,1));

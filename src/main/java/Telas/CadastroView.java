@@ -35,6 +35,7 @@ public class CadastroView extends javax.swing.JFrame {
     private void initComponents() {
 
         nomeFD = new javax.swing.JTextField();
+        cpfFD = new javax.swing.JTextField();
         usuarioFD = new javax.swing.JTextField();
         senhaFD = new javax.swing.JPasswordField();
         emailFD = new javax.swing.JTextField();
@@ -42,6 +43,8 @@ public class CadastroView extends javax.swing.JFrame {
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro vendedor - At Home");
+        setPreferredSize(new java.awt.Dimension(1280, 800));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -50,37 +53,40 @@ public class CadastroView extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        nomeFD.setForeground(new java.awt.Color(153, 153, 153));
-        nomeFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeFD.setForeground(new java.awt.Color(255, 255, 255));
+        nomeFD.setBorder(null);
         nomeFD.setOpaque(false);
         nomeFD.setBackground(new java.awt.Color(0,0,0,1));
-       
-        getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 210, -1));
+        getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 294, 310, 30));
 
-        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        usuarioFD.setForeground(new java.awt.Color(153, 153, 153));
-        usuarioFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        cpfFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cpfFD.setForeground(new java.awt.Color(255, 255, 255));
+        cpfFD.setBorder(null);
+        cpfFD.setOpaque(false);
+        emailFD.setBackground(new java.awt.Color(0,0,0,1));
+        getContentPane().add(cpfFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 310, 30));
+
+        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usuarioFD.setForeground(new java.awt.Color(255, 255, 255));
+        usuarioFD.setBorder(null);
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
-      
-        getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 210, -1));
+        getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 374, 310, 30));
 
-        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        senhaFD.setForeground(new java.awt.Color(153, 153, 153));
-        senhaFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        senhaFD.setForeground(new java.awt.Color(255, 255, 255));
+        senhaFD.setBorder(null);
         senhaFD.setOpaque(false);
         senhaFD.setBackground(new java.awt.Color(0,0,0,1));
-     
-        getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 210, -1));
+        getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 624, 310, 30));
 
-        emailFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        emailFD.setForeground(new java.awt.Color(153, 153, 153));
-        emailFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        emailFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailFD.setForeground(new java.awt.Color(255, 255, 255));
+        emailFD.setBorder(null);
         emailFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
-      
-        getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 210, -1));
+        getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 310, 30));
 
         button.setContentAreaFilled(false);
         button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -89,10 +95,10 @@ public class CadastroView extends javax.swing.JFrame {
                 buttonActionPerformed(evt);
             }
         });
-        getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 170, 20));
+        getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 680, 200, 50));
 
-        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\ImagemCadastro.png")); // NOI18N
-        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 601));
+        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\cadastro-page.png")); // NOI18N
+        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
 
         pack();
         setLocationRelativeTo(null);
@@ -109,7 +115,7 @@ public class CadastroView extends javax.swing.JFrame {
             checkEmail = emailFD.getText().contains("@") && (emailFD.getText().endsWith(".com") || emailFD.getText().endsWith(".br"));
 
             if (!checkIfUsuarioExist && checkEmail) {
-                Vendedor vendedor = new Vendedor(nomeFD.getText(), "3", usuarioFD.getText(), emailFD.getText(), new String(senhaFD.getPassword()));
+                Vendedor vendedor = new Vendedor(nomeFD.getText(), cpfFD.getText(), usuarioFD.getText(), emailFD.getText(), new String(senhaFD.getPassword()));
                 oi.add(vendedor);
                 dispose();
                 JOptionPane.showMessageDialog(this, "Vendedor adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
@@ -172,6 +178,7 @@ public class CadastroView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button;
+    private javax.swing.JTextField cpfFD;
     private javax.swing.JTextField emailFD;
     private javax.swing.JLabel fundo;
     private javax.swing.JTextField nomeFD;

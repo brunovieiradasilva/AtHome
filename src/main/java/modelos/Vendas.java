@@ -3,22 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelos;
+
 /**
  *
  * @author Bruno
  */
 import com.google.cloud.Timestamp;
+
 public class Vendas {
 
-    private String vendedor, produto, valor;
-    private final Timestamp timestamp = null;
+    private String vendedor, produto[], valor;
+    private Timestamp timestamp = null;
 
+    public Vendas(String vendedor, String[] produtos, String valor) {
 
-    public Vendas(String vendedor, String produto, String valor) {
-   
         this.vendedor = vendedor;
-        this.produto = produto;
+        this.produto = produtos;
         this.valor = valor;
+    }
+
+    public void setActualTimestamp() {
+        //  Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        //   Date data = calendar.getTime();
+        //   this.timestamp = Timestamp.of(data);
+        this.timestamp = Timestamp.now();
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
     public String getVendedor() {
@@ -29,11 +41,11 @@ public class Vendas {
         this.vendedor = vendedor;
     }
 
-    public String getProduto() {
+    public String[] getProduto() {
         return produto;
     }
 
-    public void setProduto(String produto) {
+    public void setProduto(String[] produto) {
         this.produto = produto;
     }
 
