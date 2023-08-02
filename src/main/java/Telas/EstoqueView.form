@@ -20,7 +20,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="addBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="adicionar"/>
+            <Property name="text" type="java.lang.String" value="Adicionar"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addBtnMouseClicked"/>
@@ -29,7 +29,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="removeBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="remover"/>
+            <Property name="text" type="java.lang.String" value="Remover"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -39,7 +39,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="editBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="editar"/>
+            <Property name="text" type="java.lang.String" value="Editar"/>
             <Property name="toolTipText" type="java.lang.String" value="informa&#xe7;&#xf5;es do produto"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -176,7 +176,7 @@
           <Connection code="Produto.NA" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor" postCode="prdNome.setHorizontalAlignment(JLabel.CENTER);">
           <Border info="null"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -199,12 +199,18 @@
       </Constraints>
     </Component>
     <Container class="javax.swing.JScrollPane" name="panel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="270" y="186" width="270" height="490"/>
+          <AbsoluteConstraints x="260" y="186" width="290" height="490"/>
         </Constraint>
       </Constraints>
 
@@ -212,8 +218,17 @@
       <SubComponents>
         <Component class="javax.swing.JList" name="estoqueList">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="24" green="1c" red="1c" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="20" style="1"/>
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="listModel" type="code"/>
@@ -242,7 +257,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor" postCode="pesquisaFD.setAlignmentY(JTextField.CENTER);">
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor" postCode="pesquisaFD.setAlignmentY(JTextField.CENTER);&#xa;pesquisaFD.setHorizontalAlignment(JLabel.CENTER);">
           <Color id="Default Cursor"/>
         </Property>
         <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -279,7 +294,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor" postCode="prdID.setHorizontalAlignment(JLabel.CENTER);">
           <Color id="Default Cursor"/>
         </Property>
         <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -313,7 +328,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor" postCode="prdPreco.setHorizontalAlignment(JLabel.CENTER);">
           <Color id="Default Cursor"/>
         </Property>
         <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -347,7 +362,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor" postCode="prdQuantidade.setHorizontalAlignment(JLabel.CENTER);">
           <Color id="Default Cursor"/>
         </Property>
         <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">

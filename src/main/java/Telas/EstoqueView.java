@@ -100,6 +100,7 @@ public class EstoqueView extends javax.swing.JFrame {
         prdNome.setText(Produto.NA);
         prdNome.setToolTipText("");
         prdNome.setBorder(null);
+        prdNome.setHorizontalAlignment(JLabel.CENTER);
         prdNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         prdNome.setOpaque(false);
         pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
@@ -110,8 +111,14 @@ public class EstoqueView extends javax.swing.JFrame {
         });
         getContentPane().add(prdNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 230, 250, 30));
 
+        panel.setBorder(null);
+        panel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         DefaultListModel<Produto> listModel = new DefaultListModel<>();
-        estoqueList.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        estoqueList.setBackground(new java.awt.Color(28, 28, 36));
+        estoqueList.setBorder(null);
+        estoqueList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        estoqueList.setForeground(new java.awt.Color(255, 255, 255));
         estoqueList.setModel(listModel);
         CRUD oi;
         try{
@@ -132,7 +139,7 @@ public class EstoqueView extends javax.swing.JFrame {
             });
             panel.setViewportView(estoqueList);
 
-            getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 186, 270, 490));
+            getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 186, 290, 490));
 
             pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             pesquisaFD.setForeground(new java.awt.Color(51, 51, 51));
@@ -140,6 +147,7 @@ public class EstoqueView extends javax.swing.JFrame {
             pesquisaFD.setBorder(null);
             pesquisaFD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
             pesquisaFD.setAlignmentY(JTextField.CENTER);
+            pesquisaFD.setHorizontalAlignment(JLabel.CENTER);
             pesquisaFD.setOpaque(false);
             pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
             pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +164,7 @@ public class EstoqueView extends javax.swing.JFrame {
             prdID.setToolTipText("");
             prdID.setBorder(null);
             prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            prdID.setHorizontalAlignment(JLabel.CENTER);
             prdID.setOpaque(false);
             prdID.setBackground(new java.awt.Color(0,0,0,1));
             getContentPane().add(prdID, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 260, 30));
@@ -167,6 +176,7 @@ public class EstoqueView extends javax.swing.JFrame {
             prdPreco.setToolTipText("");
             prdPreco.setBorder(null);
             prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            prdPreco.setHorizontalAlignment(JLabel.CENTER);
             prdPreco.setOpaque(false);
             prdPreco.setBackground(new java.awt.Color(0,0,0,1));
             getContentPane().add(prdPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 260, 40));
@@ -178,6 +188,7 @@ public class EstoqueView extends javax.swing.JFrame {
             prdQuantidade.setToolTipText("");
             prdQuantidade.setBorder(null);
             prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            prdQuantidade.setHorizontalAlignment(JLabel.CENTER);
             prdQuantidade.setOpaque(false);
             prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
             getContentPane().add(prdQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 260, 30));
@@ -190,7 +201,7 @@ public class EstoqueView extends javax.swing.JFrame {
             jMenuBar1.setToolTipText("Informaçoes do produto");
             jMenuBar1.setFocusable(false);
 
-            addBtn.setText("adicionar");
+            addBtn.setText("Adicionar");
             addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     addBtnMouseClicked(evt);
@@ -203,7 +214,7 @@ public class EstoqueView extends javax.swing.JFrame {
             });
             jMenuBar1.add(addBtn);
 
-            removeBtn.setText("remover");
+            removeBtn.setText("Remover");
             removeBtn.setEnabled(false);
             removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -217,7 +228,7 @@ public class EstoqueView extends javax.swing.JFrame {
             });
             jMenuBar1.add(removeBtn);
 
-            editBtn.setText("editar");
+            editBtn.setText("Editar");
             editBtn.setToolTipText("informações do produto");
             editBtn.setEnabled(false);
 
@@ -275,22 +286,33 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
-        limparLista();
-        JOptionPane.showMessageDialog(this, "Excluir item selecionado?", "Excluir Item", HEIGHT);
     }//GEN-LAST:event_removeBtnActionPerformed
 
     private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
         // TODO add your handling code here:
         if (removeBtn.isEnabled()) {
             CRUD oi;
+            Object[] options = {"Confirmar", "Cancelar"};
+
+            int i = JOptionPane.showOptionDialog(this, "Excluir item selecionado?", "Excluir Item", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
             try {
                 oi = new CRUD();
-                oi.delete("estoque", "");
+                if (i == 0) {
 
-                limparLista();
-                JOptionPane.showMessageDialog(this, "Excluir item selecionado?", "Excluir Item", HEIGHT);
+                    Produto p = estoqueList.getSelectedValue();
+                    oi.delete("estoque", p.getId_produto());
+                    ((DefaultListModel) estoqueList.getModel()).remove(estoqueList.getSelectedIndex());
+                    limparLista();
+                    JOptionPane.showMessageDialog(this, "Item deletado do estoque", "Exclusão de produto", HEIGHT);
 
+                } else {
+                    JOptionPane.showMessageDialog(this, "exclusão calcelada", "Exclusão de produto", HEIGHT);
+
+                }
             } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro, tente novamente!", "Erro ao deletar", HEIGHT);
+
             }
         }
     }//GEN-LAST:event_removeBtnMouseClicked
@@ -301,16 +323,9 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
         // TODO add your handling code here:
-        prdNome.setEditable(true);
-        prdID.setEditable(true);
-        prdPreco.setEditable(true);
-        prdQuantidade.setEditable(true);
+        ProdutoView produtoView = new ProdutoView();
+       produtoView.setVisible(true);
 
-        prdNome.setBackground(new java.awt.Color(204, 204, 204, 225));
-        prdID.setBackground(new java.awt.Color(204, 204, 204, 225));
-        prdPreco.setBackground(new java.awt.Color(204, 204, 204, 225));
-        prdQuantidade.setBackground(new java.awt.Color(204, 204, 204, 225));
-        
     }//GEN-LAST:event_addBtnMouseClicked
 
     private void pesquisaFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaFDActionPerformed
@@ -324,13 +339,14 @@ public class EstoqueView extends javax.swing.JFrame {
     private void estoqueListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estoqueListMouseClicked
         // TODO add your handling code here:
         Produto p = estoqueList.getSelectedValue();
-          prdNome.setText(p.getNome());
+        prdNome.setText(p.getNome());
         prdID.setText(p.getId_produto());
         prdPreco.setText(Double.toString(p.getPreco()));
         prdQuantidade.setText(Integer.toString(p.getQuntidadeEstoque()));
-    }//GEN-LAST:event_estoqueListMouseClicked
+        removeBtn.setEnabled(true);
+        editBtn.setEnabled(true);
 
-  
+    }//GEN-LAST:event_estoqueListMouseClicked
 
     private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pesquisaBtnActionPerformed
         // TODO add your handling code here:
@@ -346,8 +362,6 @@ public class EstoqueView extends javax.swing.JFrame {
         // TODO add your handling code here:
         limparLista();
     }// GEN-LAST:event_editBtnActionPerformed
-
-   
 
     private void limparLista() {
         estoqueList.clearSelection();
