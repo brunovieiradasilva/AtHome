@@ -8,7 +8,6 @@ import connection.CRUD;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import modelos.Cliente;
-import modelos.Vendedor;
 
 /**
  *
@@ -16,12 +15,12 @@ import modelos.Vendedor;
  */
 public class CadastroClienteView extends javax.swing.JFrame {
 
-    private HomeView h;
+    private clienteHomeView h;
 
     /**
      * Creates new form Cadastro
      */
-    public CadastroClienteView(HomeView home) {
+    public CadastroClienteView(clienteHomeView home) {
         h = home;
         initComponents();
     }

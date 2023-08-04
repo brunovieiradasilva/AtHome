@@ -5,21 +5,13 @@
 package Telas;
 
 import connection.CRUD;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.HEIGHT;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelos.Produto;
 
 /**
@@ -86,6 +78,11 @@ public class EstoqueView extends javax.swing.JFrame {
         pesquisaBtn.setBorderPainted(false);
         pesquisaBtn.setContentAreaFilled(false);
         pesquisaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pesquisaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisaBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(pesquisaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 100, 140, 34));
 
         pesquisaBox.add("NOME");
@@ -116,7 +113,6 @@ public class EstoqueView extends javax.swing.JFrame {
 
         DefaultListModel<Produto> listModel = new DefaultListModel<>();
         estoqueList.setBackground(new java.awt.Color(28, 28, 36));
-        estoqueList.setBorder(null);
         estoqueList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         estoqueList.setForeground(new java.awt.Color(255, 255, 255));
         estoqueList.setModel(listModel);
@@ -126,7 +122,10 @@ public class EstoqueView extends javax.swing.JFrame {
 
             for(Produto produto: oi.getTodosProdutos()){
                 listModel.addElement(produto);
+                System.out.println("try 2");
+
             }}catch(Exception e){
+                System.out.println("erro excesão 2");
 
             }
 
@@ -324,7 +323,7 @@ public class EstoqueView extends javax.swing.JFrame {
     private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
         // TODO add your handling code here:
         ProdutoView produtoView = new ProdutoView();
-       produtoView.setVisible(true);
+        produtoView.setVisible(true);
 
     }//GEN-LAST:event_addBtnMouseClicked
 
@@ -342,21 +341,36 @@ public class EstoqueView extends javax.swing.JFrame {
         prdNome.setText(p.getNome());
         prdID.setText(p.getId_produto());
         prdPreco.setText(Double.toString(p.getPreco()));
-        prdQuantidade.setText(Integer.toString(p.getQuntidadeEstoque()));
+        prdQuantidade.setText(Integer.toString(p.getQuantidade()));
         removeBtn.setEnabled(true);
         editBtn.setEnabled(true);
 
     }//GEN-LAST:event_estoqueListMouseClicked
 
-    private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pesquisaBtnActionPerformed
+    private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaBtnActionPerformed
         // TODO add your handling code here:
-        if (pesquisaBox.getSelectedItem() != null && !prdNome.getText().equals("")) {
-            if (pesquisaBox.getSelectedItem().equals("NOME")) {
+        CRUD oi;
+        try {
+            oi = new CRUD();
+            DefaultListModel<Produto> model = new DefaultListModel<>();
+
+            if (pesquisaBox.getSelectedItem() != null && !pesquisaFD.getText().toLowerCase().equals("")) {
+                if (pesquisaBox.getSelectedItem().equals("NOME")) {
+
+                    for (Produto produto : oi.getTodosProdutos(pesquisaFD.getText().toLowerCase())) {
+                        model.addElement(produto);
+                    }
+
+                } else {
+                  model.addElement( (Produto) oi.getPorID("produtos", pesquisaFD.getText().toLowerCase()));
+                }
 
             }
+          //  estoqueList.setModel(model);
+        } catch (Exception e) {
 
         }
-    }// GEN-LAST:event_pesquisaBtnActionPerformed
+    }//GEN-LAST:event_pesquisaBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:

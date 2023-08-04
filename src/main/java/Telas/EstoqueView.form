@@ -137,6 +137,9 @@
           <Color id="Hand Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesquisaBtnActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="591" y="100" width="140" height="34"/>
@@ -221,9 +224,6 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="24" green="1c" red="1c" type="rgb"/>
             </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
@@ -238,7 +238,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="estoqueListMouseClicked"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="CRUD oi;&#xa;try{&#xa;oi = new CRUD();&#xa;&#xa;for(Produto produto: oi.getTodosProdutos()){&#xa;listModel.addElement(produto);&#xa;}}catch(Exception e){&#xa;&#xa;}&#xa;&#xa;DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();  &#xa;renderer.setHorizontalAlignment(JLabel.CENTER);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="CRUD oi;&#xa;try{&#xa;oi = new CRUD();&#xa;&#xa;for(Produto produto: oi.getTodosProdutos()){&#xa;listModel.addElement(produto);&#xa;            System.out.println(&quot;try 2&quot;);&#xa;&#xa;}}catch(Exception e){&#xa;            System.out.println(&quot;erro exces&#xe3;o 2&quot;);&#xa;&#xa;}&#xa;&#xa;DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();  &#xa;renderer.setHorizontalAlignment(JLabel.CENTER);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel&lt;Produto&gt; listModel = new DefaultListModel&lt;&gt;();"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Produto&gt;"/>
           </AuxValues>

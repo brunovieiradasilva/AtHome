@@ -5,7 +5,6 @@
 package connection;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -104,9 +103,41 @@ public class CRUD {
 
                 i++;
             }
+                        System.out.println("try");
+
             return lista;
         } catch (Exception e) {
-            return new Produto[0];
+            Produto p = new Produto("erro ao carregar",0.0,0);
+            Produto[] prod = {p};
+            System.out.println("erro excesão");
+            return prod;
+        }
+
+    }
+
+    public Produto[] getTodosProdutos(String nome) {
+        int i = 0;
+
+        try {
+// asynchronously retrieve all documents
+           CollectionReference vend = db.collection("estoque");
+            Query query = vend.whereEqualTo("nome", nome);
+            ApiFuture<QuerySnapshot> documentos = query.get();
+
+// future.get() blocks on response
+         
+            Produto lista[] = {null, null};
+            for (QueryDocumentSnapshot document : documentos.get().getDocuments()) {
+                lista[i] = new Produto(document.getString("nome"), document.getDouble("preco"), document.get("quantidade", int.class), document.getId());
+
+                i++;
+            }
+            return lista;
+        } catch (Exception e) {
+            Produto p = new Produto("erro ao carregar",0.0,0);
+            Produto[] prod = {p};
+            System.out.println("erro excesão 2");
+            return prod;
         }
 
     }

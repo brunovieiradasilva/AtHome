@@ -4,8 +4,6 @@
  */
 package Telas;
 
-import javax.swing.JTextField;
-import modelos.Images;
 import modelos.Vendedor;
 
 /**
@@ -14,14 +12,15 @@ import modelos.Vendedor;
  */
 public class HomeView extends javax.swing.JFrame {
 
-    private Vendedor user;
+    Vendedor user;
+    
 
     /**
      * Creates new form Home
      */
     public HomeView(Vendedor usuario) {
         if (usuario == null) {
-            user = new Vendedor("default2");
+            user = new Vendedor("default");
         } else {
             user = usuario;
         }
@@ -57,15 +56,20 @@ public class HomeView extends javax.swing.JFrame {
                 estoqueBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(estoqueBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 190, 190));
+        getContentPane().add(estoqueBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 190, 200));
 
         vendaBtn.setContentAreaFilled(false);
         vendaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(vendaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 280, 190, 190));
+        getContentPane().add(vendaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 280, 190, 200));
 
         cadClienteBtn.setContentAreaFilled(false);
         cadClienteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(cadClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 280, 190, 200));
+        cadClienteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadClienteBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 280, 200, 200));
 
         cadVendedorBtn.setContentAreaFilled(false);
         cadVendedorBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -74,7 +78,7 @@ public class HomeView extends javax.swing.JFrame {
                 cadVendedorBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(cadVendedorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 280, 190, 190));
+        getContentPane().add(cadVendedorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 280, 190, 200));
 
         usuario.setEditable(false);
         usuario.setBackground(new java.awt.Color(204, 102, 255));
@@ -119,6 +123,11 @@ public class HomeView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioActionPerformed
 
+    private void cadClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClienteBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cadClienteBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -156,8 +165,7 @@ public class HomeView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeView(new Vendedor("default")).setVisible(true);
-                Images img = new Images();
+                new HomeView(null).setVisible(true);
 
             }
         });

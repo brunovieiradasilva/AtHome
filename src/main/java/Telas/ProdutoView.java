@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Telas;
-
+import connection.CRUD;
+import modelos.Produto;
 /**
  *
  * @author Bruno
@@ -27,10 +28,12 @@ public class ProdutoView extends javax.swing.JFrame {
     private void initComponents() {
 
         prdNome = new javax.swing.JTextField();
-        prdID = new javax.swing.JTextField();
         prdPreco = new javax.swing.JTextField();
         prdQuantidade = new javax.swing.JTextField();
         salvarBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adicionar Item ao Estoque");
@@ -41,67 +44,106 @@ public class ProdutoView extends javax.swing.JFrame {
         prdNome.setToolTipText("");
         prdNome.setBorder(null);
         prdNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdNome.setBackground(new java.awt.Color(0,0,0,1));
-
-        prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        prdID.setForeground(new java.awt.Color(51, 51, 51));
-        prdID.setToolTipText("");
-        prdID.setBorder(null);
-        prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdID.setBackground(new java.awt.Color(0,0,0,1));
+        prdNome.setOpaque(true);
+        prdNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prdNomeActionPerformed(evt);
+            }
+        });
 
         prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdPreco.setForeground(new java.awt.Color(51, 51, 51));
         prdPreco.setToolTipText("");
         prdPreco.setBorder(null);
         prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdPreco.setBackground(new java.awt.Color(0,0,0,1));
+        prdPreco.setOpaque(true);
 
         prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdQuantidade.setForeground(new java.awt.Color(51, 51, 51));
         prdQuantidade.setToolTipText("");
         prdQuantidade.setBorder(null);
         prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
+        prdQuantidade.setOpaque(true);
 
         salvarBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Salvar-button.png")); // NOI18N
         salvarBtn.setContentAreaFilled(false);
         salvarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Nome do produto: ");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Preço do produto: ");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Quantidade em estoque: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(207, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(salvarBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(prdID)
-                        .addComponent(prdPreco)
-                        .addComponent(prdNome)
-                        .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(salvarBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(prdPreco)
+                            .addComponent(prdNome)
+                            .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(prdID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prdPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(prdPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(30, 30, 30)
                 .addComponent(salvarBtn)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
+        // TODO add your handling code here:
+        CRUD oi;
+        try{
+            oi = new CRUD();
+            Produto produto = new Produto(prdNome.getText(),Double.parseDouble(prdPreco.getText()),Integer.parseInt(prdQuantidade.getText()));
+            oi.add(produto);
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_salvarBtnActionPerformed
+
+    private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prdNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prdNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,7 +181,9 @@ public class ProdutoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField prdID;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField prdNome;
     private javax.swing.JTextField prdPreco;
     private javax.swing.JTextField prdQuantidade;
