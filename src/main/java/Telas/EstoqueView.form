@@ -117,24 +117,24 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="pesquisaBtn">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new java.awt.Color(204, 204, 255,1)" type="code"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Leelawadee UI" size="24" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new javax.swing.ImageIcon(&quot;src\\main\\java\\imagens\\search.png&quot;)" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
-            </LineBorder>
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="5" left="0" right="0" top="0"/>
           </Border>
         </Property>
-        <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
+        </Property>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 0, 0, 0]"/>
         </Property>
       </Properties>
       <Events>
@@ -142,25 +142,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="591" y="100" width="140" height="34"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="java.awt.Choice" name="pesquisaBox">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="pesquisaBox.add(&quot;NOME&quot;);&#xa;pesquisaBox.add(&quot;ID&quot;);"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="790" y="100" width="180" height="34"/>
+          <AbsoluteConstraints x="590" y="94" width="140" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -238,7 +220,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="estoqueListMouseClicked"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="CRUD oi;&#xa;try{&#xa;oi = new CRUD();&#xa;&#xa;for(Produto produto: oi.getTodosProdutos()){&#xa;listModel.addElement(produto);&#xa;            System.out.println(&quot;try 2&quot;);&#xa;&#xa;}}catch(Exception e){&#xa;            System.out.println(&quot;erro exces&#xe3;o 2&quot;);&#xa;&#xa;}&#xa;&#xa;DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();  &#xa;renderer.setHorizontalAlignment(JLabel.CENTER);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="CRUD oi;&#xa;try{&#xa;oi = new CRUD();&#xa;&#xa;for(Produto produto: oi.getTodosProdutos()){&#xa;listModel.addElement(produto);&#xa;            System.out.println(&quot;try 2&quot;);&#xa;&#xa;}&#xa;}catch(Exception e){&#xa;            System.out.println(&quot;erro exces&#xe3;o 2&quot;);&#xa;&#xa;}&#xa;&#xa;DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();  &#xa;renderer.setHorizontalAlignment(JLabel.CENTER);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultListModel&lt;Produto&gt; listModel = new DefaultListModel&lt;&gt;();"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Produto&gt;"/>
           </AuxValues>
@@ -266,13 +248,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesquisaFDActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pesquisaFDKeyTyped"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1085" y="100" width="160" height="30"/>
+          <AbsoluteConstraints x="800" y="105" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

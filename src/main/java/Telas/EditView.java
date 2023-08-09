@@ -17,6 +17,7 @@ public class EditView extends javax.swing.JFrame {
 
     Produto p;
 String field;
+EstoqueView estoque;
     /**
      * Creates new form editView
      */
@@ -25,11 +26,12 @@ String field;
         initComponents();
     }
 
-    public EditView(Produto p, String field) {
+    public EditView(EstoqueView estoque, Produto p, String field) {
 
         getContentPane().setBackground(new java.awt.Color(32, 28, 36));
         this.p = p;
         this.field = field;
+        this.estoque = estoque;
         initComponents();
         label.setText(label.getText() + field + ":");
     }
@@ -50,6 +52,11 @@ String field;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar informação");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         textField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textField.setForeground(new java.awt.Color(51, 51, 51));
@@ -119,12 +126,18 @@ String field;
         try {
             oi = new CRUD();
             oi.edit("estoque", p.getId_produto(), field,textField.getText());
+            estoque.atualizarEstoqueList(" ");
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Algum erro ocorreu!", "Erro ao adicionar item.", HEIGHT);
 
         }
     }//GEN-LAST:event_salvarBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

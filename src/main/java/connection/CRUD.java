@@ -41,7 +41,7 @@ public class CRUD {
             ApiFuture<WriteResult> future = db.collection("cliente").document(cliente.getCpf()).set(cliente);
             return true;
         } catch (Exception e) {
- 
+
             return false;
         }
     }
@@ -118,22 +118,24 @@ public class CRUD {
 
         try {
 // asynchronously retrieve all documents
-            CollectionReference vend = db.collection("estoque");
-            Query query = vend.whereEqualTo("nome", nome);
-            ApiFuture<QuerySnapshot> documentos = query.get();
-
+            ApiFuture<QuerySnapshot> tdCliente = db.collection("estoque").get();
 // future.get() blocks on response
-            Produto lista[] = {null, null};
-            for (QueryDocumentSnapshot document : documentos.get().getDocuments()) {
-                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.getString("quantidade"), document.getId());
-
+            List<QueryDocumentSnapshot> documentos = tdCliente.get().getDocuments();
+            Produto[] lista = new Produto[documentos.size()];
+            for (QueryDocumentSnapshot document : documentos) {
+                if (document.getString("nome").toLowerCase().contains(nome.toLowerCase())) {
+                    lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.getString("quantidade"), document.getId());
+                }
                 i++;
             }
+            System.out.println("try");
+
             return lista;
         } catch (Exception e) {
             Produto p = new Produto("erro ao carregar", "0", "0");
             Produto[] prod = {p};
-            System.out.println("erro excesão 2");
+            System.out.println("erro excesão");
+            e.printStackTrace();
             return prod;
         }
 

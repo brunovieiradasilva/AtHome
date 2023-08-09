@@ -43,7 +43,6 @@ public class EstoqueView extends javax.swing.JFrame {
     private void initComponents() {
 
         pesquisaBtn = new javax.swing.JButton();
-        pesquisaBox = new java.awt.Choice();
         prdNome = new javax.swing.JTextField();
         panel = new javax.swing.JScrollPane();
         estoqueList = new javax.swing.JList<>();
@@ -71,25 +70,19 @@ public class EstoqueView extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pesquisaBtn.setBackground(new java.awt.Color(204, 204, 255,1));
+        pesquisaBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         pesquisaBtn.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\search.png"));
         pesquisaBtn.setToolTipText("");
-        pesquisaBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        pesquisaBtn.setBorderPainted(false);
+        pesquisaBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 5, 0));
         pesquisaBtn.setContentAreaFilled(false);
         pesquisaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pesquisaBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         pesquisaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pesquisaBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(pesquisaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 100, 140, 34));
-
-        pesquisaBox.add("NOME");
-        pesquisaBox.add("ID");
-        pesquisaBox.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        pesquisaBox.setForeground(new java.awt.Color(51, 51, 51));
-        getContentPane().add(pesquisaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 100, 180, 34));
+        getContentPane().add(pesquisaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 94, 140, 40));
 
         prdNome.setEditable(false);
         prdNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -124,147 +117,153 @@ public class EstoqueView extends javax.swing.JFrame {
                 listModel.addElement(produto);
                 System.out.println("try 2");
 
-            }}catch(Exception e){
-                System.out.println("erro excesão 2");
-
             }
+        }catch(Exception e){
+            System.out.println("erro excesão 2");
 
-            DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();
-            renderer.setHorizontalAlignment(JLabel.CENTER);
-            estoqueList.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    estoqueListMouseClicked(evt);
-                }
-            });
-            panel.setViewportView(estoqueList);
+        }
 
-            getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 186, 290, 490));
+        DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        estoqueList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                estoqueListMouseClicked(evt);
+            }
+        });
+        panel.setViewportView(estoqueList);
 
-            pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            pesquisaFD.setForeground(new java.awt.Color(51, 51, 51));
-            pesquisaFD.setToolTipText("");
-            pesquisaFD.setBorder(null);
-            pesquisaFD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            pesquisaFD.setAlignmentY(JTextField.CENTER);
-            pesquisaFD.setHorizontalAlignment(JLabel.CENTER);
-            pesquisaFD.setOpaque(false);
-            pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
-            pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    pesquisaFDActionPerformed(evt);
-                }
-            });
-            getContentPane().add(pesquisaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(1085, 100, 160, 30));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 186, 290, 490));
 
-            prdID.setEditable(false);
-            prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            prdID.setForeground(new java.awt.Color(51, 51, 51));
-            prdID.setText(Produto.NA);
-            prdID.setToolTipText("");
-            prdID.setBorder(null);
-            prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            prdID.setHorizontalAlignment(JLabel.CENTER);
-            prdID.setOpaque(false);
-            prdID.setBackground(new java.awt.Color(0,0,0,1));
-            getContentPane().add(prdID, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 260, 30));
+        pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pesquisaFD.setForeground(new java.awt.Color(51, 51, 51));
+        pesquisaFD.setToolTipText("");
+        pesquisaFD.setBorder(null);
+        pesquisaFD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pesquisaFD.setAlignmentY(JTextField.CENTER);
+        pesquisaFD.setHorizontalAlignment(JLabel.CENTER);
+        pesquisaFD.setOpaque(false);
+        pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
+        pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisaFDActionPerformed(evt);
+            }
+        });
+        pesquisaFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pesquisaFDKeyTyped(evt);
+            }
+        });
+        getContentPane().add(pesquisaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 105, 160, -1));
 
-            prdPreco.setEditable(false);
-            prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            prdPreco.setForeground(new java.awt.Color(51, 51, 51));
-            prdPreco.setText(Produto.NA);
-            prdPreco.setToolTipText("");
-            prdPreco.setBorder(null);
-            prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            prdPreco.setHorizontalAlignment(JLabel.CENTER);
-            prdPreco.setOpaque(false);
-            prdPreco.setBackground(new java.awt.Color(0,0,0,1));
-            getContentPane().add(prdPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 260, 40));
+        prdID.setEditable(false);
+        prdID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        prdID.setForeground(new java.awt.Color(51, 51, 51));
+        prdID.setText(Produto.NA);
+        prdID.setToolTipText("");
+        prdID.setBorder(null);
+        prdID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prdID.setHorizontalAlignment(JLabel.CENTER);
+        prdID.setOpaque(false);
+        prdID.setBackground(new java.awt.Color(0,0,0,1));
+        getContentPane().add(prdID, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 260, 30));
 
-            prdQuantidade.setEditable(false);
-            prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            prdQuantidade.setForeground(new java.awt.Color(51, 51, 51));
-            prdQuantidade.setText(Produto.NA);
-            prdQuantidade.setToolTipText("");
-            prdQuantidade.setBorder(null);
-            prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            prdQuantidade.setHorizontalAlignment(JLabel.CENTER);
-            prdQuantidade.setOpaque(false);
-            prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
-            getContentPane().add(prdQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 260, 30));
+        prdPreco.setEditable(false);
+        prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        prdPreco.setForeground(new java.awt.Color(51, 51, 51));
+        prdPreco.setText(Produto.NA);
+        prdPreco.setToolTipText("");
+        prdPreco.setBorder(null);
+        prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prdPreco.setHorizontalAlignment(JLabel.CENTER);
+        prdPreco.setOpaque(false);
+        prdPreco.setBackground(new java.awt.Color(0,0,0,1));
+        getContentPane().add(prdPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 260, 40));
 
-            fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Estoque-page.png")); // NOI18N
-            getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        prdQuantidade.setEditable(false);
+        prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        prdQuantidade.setForeground(new java.awt.Color(51, 51, 51));
+        prdQuantidade.setText(Produto.NA);
+        prdQuantidade.setToolTipText("");
+        prdQuantidade.setBorder(null);
+        prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prdQuantidade.setHorizontalAlignment(JLabel.CENTER);
+        prdQuantidade.setOpaque(false);
+        prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
+        getContentPane().add(prdQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 260, 30));
 
-            jMenuBar1.setBackground(new java.awt.Color(204, 255, 102));
-            jMenuBar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-            jMenuBar1.setToolTipText("Informaçoes do produto");
-            jMenuBar1.setFocusable(false);
+        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Estoque-page.png")); // NOI18N
+        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-            addBtn.setText("Adicionar");
-            addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    addBtnMouseClicked(evt);
-                }
-            });
-            addBtn.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    addBtnActionPerformed(evt);
-                }
-            });
-            jMenuBar1.add(addBtn);
+        jMenuBar1.setBackground(new java.awt.Color(204, 255, 102));
+        jMenuBar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        jMenuBar1.setToolTipText("Informaçoes do produto");
+        jMenuBar1.setFocusable(false);
 
-            removeBtn.setText("Remover");
-            removeBtn.setEnabled(false);
-            removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    removeBtnMouseClicked(evt);
-                }
-            });
-            removeBtn.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    removeBtnActionPerformed(evt);
-                }
-            });
-            jMenuBar1.add(removeBtn);
+        addBtn.setText("Adicionar");
+        addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addBtnMouseClicked(evt);
+            }
+        });
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(addBtn);
 
-            editBtn.setText("Editar");
-            editBtn.setToolTipText("informações do produto");
-            editBtn.setEnabled(false);
+        removeBtn.setText("Remover");
+        removeBtn.setEnabled(false);
+        removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeBtnMouseClicked(evt);
+            }
+        });
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(removeBtn);
 
-            editNome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-            editNome.setText("Nome");
-            editNome.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    editNomeActionPerformed(evt);
-                }
-            });
-            editBtn.add(editNome);
+        editBtn.setText("Editar");
+        editBtn.setToolTipText("informações do produto");
+        editBtn.setEnabled(false);
 
-            editPreco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-            editPreco.setText("preço");
-            editPreco.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    editPrecoActionPerformed(evt);
-                }
-            });
-            editBtn.add(editPreco);
+        editNome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        editNome.setText("Nome");
+        editNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editNomeActionPerformed(evt);
+            }
+        });
+        editBtn.add(editNome);
 
-            editQuanti.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-            editQuanti.setText("quantidade");
-            editQuanti.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    editQuantiActionPerformed(evt);
-                }
-            });
-            editBtn.add(editQuanti);
+        editPreco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        editPreco.setText("preço");
+        editPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPrecoActionPerformed(evt);
+            }
+        });
+        editBtn.add(editPreco);
 
-            jMenuBar1.add(editBtn);
+        editQuanti.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        editQuanti.setText("quantidade");
+        editQuanti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editQuantiActionPerformed(evt);
+            }
+        });
+        editBtn.add(editQuanti);
 
-            setJMenuBar(jMenuBar1);
+        jMenuBar1.add(editBtn);
 
-            pack();
-            setLocationRelativeTo(null);
-        }// </editor-fold>//GEN-END:initComponents
+        setJMenuBar(jMenuBar1);
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -273,7 +272,7 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void editQuantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editQuantiActionPerformed
         // TODO add your handling code here:
-        EditView edit = new EditView(estoqueList.getSelectedValue(), "quantidade");
+        EditView edit = new EditView(this, estoqueList.getSelectedValue(), "quantidade");
         edit.setVisible(true);
         limparLista();
 
@@ -281,7 +280,7 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void editPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPrecoActionPerformed
         // TODO add your handling code here:
-        EditView edit = new EditView(estoqueList.getSelectedValue(), "preco");
+        EditView edit = new EditView(this, estoqueList.getSelectedValue(), "preco");
         edit.setVisible(true);
         limparLista();
 
@@ -289,7 +288,7 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void editNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNomeActionPerformed
         // TODO add your handling code here:
-        EditView edit = new EditView(estoqueList.getSelectedValue(), "nome");
+        EditView edit = new EditView(this, estoqueList.getSelectedValue(), "nome");
         edit.setVisible(true);
         limparLista();
 
@@ -386,30 +385,15 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaBtnActionPerformed
         // TODO add your handling code here:
-        CRUD oi;
-        try {
-            oi = new CRUD();
-            DefaultListModel<Produto> model = new DefaultListModel<>();
 
-            if (pesquisaBox.getSelectedItem() != null && !pesquisaFD.getText().toLowerCase().equals("")) {
-                if (pesquisaBox.getSelectedItem().equals("NOME")) {
-
-                    for (Produto produto : oi.getTodosProdutos()) {
-                        if (produto.getNome().equalsIgnoreCase(pesquisaFD.getText())) {
-                            model.addElement(produto);
-                        }
-                    }
-
-                } else {
-                    model.addElement((Produto) oi.getPorID("produtos", pesquisaFD.getText().toLowerCase()));
-                }
-
-            }
-            //  estoqueList.setModel(model);
-        } catch (Exception e) {
-
-        }
     }//GEN-LAST:event_pesquisaBtnActionPerformed
+
+    private void pesquisaFDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisaFDKeyTyped
+        // TODO add your handling code here:
+
+        atualizarEstoqueList(pesquisaFD.getText());
+
+    }//GEN-LAST:event_pesquisaFDKeyTyped
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
@@ -418,6 +402,31 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void limparLista() {
         estoqueList.clearSelection();
+    }
+
+    protected void atualizarEstoqueList(String nome) {
+        DefaultListModel<Produto> Model = (DefaultListModel) estoqueList.getModel();
+        CRUD oi;
+        try {
+            oi = new CRUD();
+            Model.clear();
+            for (Produto produto : oi.getTodosProdutos(nome)) {
+                Model.addElement(produto);
+                System.out.println("try 2");
+
+            }
+            Produto p = estoqueList.getModel().getElementAt(1);
+            prdNome.setText(p.getNome());
+            prdID.setText(p.getId_produto());
+            prdPreco.setText(p.getPreco());
+            prdQuantidade.setText(p.getQuantidade());
+            removeBtn.setEnabled(true);
+            editBtn.setEnabled(true);
+
+        } catch (Exception e) {
+            System.out.println("erro excesão 2");
+
+        }
     }
 
     /**
@@ -470,7 +479,6 @@ public class EstoqueView extends javax.swing.JFrame {
     private javax.swing.JLabel fundo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane panel;
-    private java.awt.Choice pesquisaBox;
     private javax.swing.JButton pesquisaBtn;
     private javax.swing.JTextField pesquisaFD;
     private javax.swing.JTextField prdID;

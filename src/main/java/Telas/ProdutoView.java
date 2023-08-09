@@ -38,47 +38,55 @@ public class ProdutoView extends javax.swing.JFrame {
         prdPreco = new modelos.RoundField(10);
         prdQuantidade = new modelos.RoundField(10);
         salvarBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adicionar Item ao Estoque");
         setBackground(new java.awt.Color(32, 28, 36));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         prdNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdNome.setForeground(new java.awt.Color(51, 51, 51));
         prdNome.setToolTipText("");
+        prdNome.setOpaque(false);
         prdNome.setBorder(null);
         prdNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prdNome.setBackground(new java.awt.Color(0,0,0,1));
         prdNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 prdNomeKeyPressed(evt);
             }
         });
+        getContentPane().add(prdNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 97, 280, 30));
 
         prdPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdPreco.setForeground(new java.awt.Color(51, 51, 51));
         prdPreco.setToolTipText("");
         prdPreco.setBorder(null);
+        prdPreco.setOpaque(false);
         prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prdPreco.setBackground(new java.awt.Color(0,0,0,1));
         prdPreco.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 prdPrecoKeyPressed(evt);
             }
         });
+        getContentPane().add(prdPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 220, 30));
 
         prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdQuantidade.setForeground(new java.awt.Color(51, 51, 51));
         prdQuantidade.setToolTipText("");
         prdQuantidade.setBorder(null);
+        prdQuantidade.setOpaque(false);
         prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prdQuantidade.setBackground(new java.awt.Color(0,0,0,1));
         prdQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 prdQuantidadeKeyPressed(evt);
             }
         });
+        getContentPane().add(prdQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 280, -1));
 
         salvarBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Salvar-button.png")); // NOI18N
         salvarBtn.setContentAreaFilled(false);
@@ -88,60 +96,10 @@ public class ProdutoView extends javax.swing.JFrame {
                 salvarBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(salvarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, 60));
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nome do produto: ");
-
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Preço do produto: ");
-
-        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Quantidade em estoque: ");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(salvarBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(prdPreco)
-                            .addComponent(prdQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(prdNome))))
-                .addGap(37, 37, 37))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prdPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(30, 30, 30)
-                .addComponent(salvarBtn)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\telinha.png")); // NOI18N
+        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -218,9 +176,7 @@ public class ProdutoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel fundo;
     private javax.swing.JTextField prdNome;
     private javax.swing.JTextField prdPreco;
     private javax.swing.JTextField prdQuantidade;
