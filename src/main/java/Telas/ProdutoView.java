@@ -3,8 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Telas;
+
 import connection.CRUD;
-import modelos.Produto;
+import java.awt.event.KeyEvent;
+import static java.awt.image.ImageObserver.HEIGHT;
+import javax.swing.JOptionPane;
+import modelos.*;
+
 /**
  *
  * @author Bruno
@@ -15,6 +20,8 @@ public class ProdutoView extends javax.swing.JFrame {
      * Creates new form ProdutoView
      */
     public ProdutoView() {
+        getContentPane().setBackground(new java.awt.Color(32, 28, 36));
+
         initComponents();
     }
 
@@ -27,9 +34,9 @@ public class ProdutoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        prdNome = new javax.swing.JTextField();
-        prdPreco = new javax.swing.JTextField();
-        prdQuantidade = new javax.swing.JTextField();
+        prdNome = new modelos.RoundField(10);
+        prdPreco = new modelos.RoundField(10);
+        prdQuantidade = new modelos.RoundField(10);
         salvarBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,6 +44,7 @@ public class ProdutoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adicionar Item ao Estoque");
+        setBackground(new java.awt.Color(32, 28, 36));
         setResizable(false);
 
         prdNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -44,10 +52,9 @@ public class ProdutoView extends javax.swing.JFrame {
         prdNome.setToolTipText("");
         prdNome.setBorder(null);
         prdNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdNome.setOpaque(true);
-        prdNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prdNomeActionPerformed(evt);
+        prdNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                prdNomeKeyPressed(evt);
             }
         });
 
@@ -56,14 +63,22 @@ public class ProdutoView extends javax.swing.JFrame {
         prdPreco.setToolTipText("");
         prdPreco.setBorder(null);
         prdPreco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdPreco.setOpaque(true);
+        prdPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                prdPrecoKeyPressed(evt);
+            }
+        });
 
         prdQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         prdQuantidade.setForeground(new java.awt.Color(51, 51, 51));
         prdQuantidade.setToolTipText("");
         prdQuantidade.setBorder(null);
         prdQuantidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        prdQuantidade.setOpaque(true);
+        prdQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                prdQuantidadeKeyPressed(evt);
+            }
+        });
 
         salvarBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Salvar-button.png")); // NOI18N
         salvarBtn.setContentAreaFilled(false);
@@ -74,13 +89,16 @@ public class ProdutoView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome do produto: ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Preço do produto: ");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Quantidade em estoque: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,18 +119,18 @@ public class ProdutoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(prdPreco)
-                            .addComponent(prdNome)
-                            .addComponent(prdQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(prdQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(prdNome))))
                 .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1)
+                    .addComponent(prdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prdPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -132,18 +150,37 @@ public class ProdutoView extends javax.swing.JFrame {
     private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         // TODO add your handling code here:
         CRUD oi;
-        try{
+        try {
             oi = new CRUD();
-            Produto produto = new Produto(prdNome.getText(),Double.parseDouble(prdPreco.getText()),Integer.parseInt(prdQuantidade.getText()));
+            Produto produto = new Produto(prdNome.getText(),prdPreco.getText(), Integer.parseInt(prdQuantidade.getText()));
             oi.add(produto);
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Algum erro ocorreu!", "Erro ao adicionar item.", HEIGHT);
+
         }
+        dispose();
     }//GEN-LAST:event_salvarBtnActionPerformed
 
-    private void prdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prdNomeActionPerformed
+    private void prdQuantidadeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prdQuantidadeKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_prdNomeActionPerformed
+        enterPressed(evt);
+    }//GEN-LAST:event_prdQuantidadeKeyPressed
+
+    private void prdPrecoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prdPrecoKeyPressed
+        // TODO add your handling code here:
+        enterPressed(evt);
+    }//GEN-LAST:event_prdPrecoKeyPressed
+
+    private void prdNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prdNomeKeyPressed
+        // TODO add your handling code here:
+        enterPressed(evt);
+    }//GEN-LAST:event_prdNomeKeyPressed
+
+    private void enterPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            salvarBtnActionPerformed(null);
+        }
+    }
 
     /**
      * @param args the command line arguments

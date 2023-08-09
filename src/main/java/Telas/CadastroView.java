@@ -5,6 +5,7 @@
 package Telas;
 
 import connection.CRUD;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import modelos.Vendedor;
@@ -57,6 +58,11 @@ public class CadastroView extends javax.swing.JFrame {
         nomeFD.setBorder(null);
         nomeFD.setOpaque(false);
         nomeFD.setBackground(new java.awt.Color(0,0,0,1));
+        nomeFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomeFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 294, 310, 30));
 
         cpfFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -64,6 +70,11 @@ public class CadastroView extends javax.swing.JFrame {
         cpfFD.setBorder(null);
         cpfFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
+        cpfFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cpfFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(cpfFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 310, 30));
 
         usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -71,6 +82,11 @@ public class CadastroView extends javax.swing.JFrame {
         usuarioFD.setBorder(null);
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
+        usuarioFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usuarioFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 374, 310, 30));
 
         senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -78,6 +94,11 @@ public class CadastroView extends javax.swing.JFrame {
         senhaFD.setBorder(null);
         senhaFD.setOpaque(false);
         senhaFD.setBackground(new java.awt.Color(0,0,0,1));
+        senhaFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                senhaFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 624, 310, 30));
 
         emailFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -85,6 +106,11 @@ public class CadastroView extends javax.swing.JFrame {
         emailFD.setBorder(null);
         emailFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
+        emailFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                emailFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 310, 30));
 
         button.setContentAreaFilled(false);
@@ -139,6 +165,31 @@ public class CadastroView extends javax.swing.JFrame {
                 h.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
+    private void nomeFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeFDKeyPressed
+
+    private void usuarioFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioFDKeyPressed
+
+    private void emailFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_emailFDKeyPressed
+
+    private void cpfFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpfFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_cpfFDKeyPressed
+
+    private void senhaFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senhaFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_senhaFDKeyPressed
+
+     private void enterPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            buttonActionPerformed(null);
+        }
+    }
     /**
      * @param args the command line arguments
      */
