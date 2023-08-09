@@ -8,31 +8,29 @@ package modelos;
  *
  * @author Bruno
  */
-public class Vendas {
-   private String hora, data, vendedor, produto, valor;
+import com.google.cloud.Timestamp;
 
-    public Vendas(String hora, String data, String vendedor, String produto, String valor) {
-        this.hora = hora;
-        this.data = data;
+public class Vendas {
+
+    private String vendedor, produto[], valor;
+    private Timestamp timestamp = null;
+
+    public Vendas(String vendedor, String[] produtos, String valor) {
+
         this.vendedor = vendedor;
-        this.produto = produto;
+        this.produto = produtos;
         this.valor = valor;
     }
 
-    public String getHora() {
-        return hora;
+    public void setActualTimestamp() {
+        //  Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        //   Date data = calendar.getTime();
+        //   this.timestamp = Timestamp.of(data);
+        this.timestamp = Timestamp.now();
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
     public String getVendedor() {
@@ -43,11 +41,11 @@ public class Vendas {
         this.vendedor = vendedor;
     }
 
-    public String getProduto() {
+    public String[] getProduto() {
         return produto;
     }
 
-    public void setProduto(String produto) {
+    public void setProduto(String[] produto) {
         this.produto = produto;
     }
 
@@ -58,6 +56,5 @@ public class Vendas {
     public void setValor(String valor) {
         this.valor = valor;
     }
-    
-    
+
 }

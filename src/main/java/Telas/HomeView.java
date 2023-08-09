@@ -4,23 +4,28 @@
  */
 package Telas;
 
-import javax.swing.JTextField;
-import modelos.Images;
+import modelos.Vendedor;
 
 /**
  *
  * @author Bruno
  */
 public class HomeView extends javax.swing.JFrame {
-private String user;
+
+    Vendedor user;
+    
+
     /**
      * Creates new form Home
      */
-    public HomeView(String usuarioLogin) {
-        user = usuarioLogin;
+    public HomeView(Vendedor usuario) {
+        if (usuario == null) {
+            user = new Vendedor("default");
+        } else {
+            user = usuario;
+        }
         initComponents();
-        
-        
+
     }
 
     /**
@@ -33,11 +38,10 @@ private String user;
     private void initComponents() {
 
         estoqueBtn = new javax.swing.JButton();
-        compraBtn = new javax.swing.JButton();
+        vendaBtn = new javax.swing.JButton();
         cadClienteBtn = new javax.swing.JButton();
         cadVendedorBtn = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
-        fotoperfil = new javax.swing.JLabel();
         fundoHome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,7 +49,6 @@ private String user;
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        estoqueBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\estoque.png")); // NOI18N
         estoqueBtn.setContentAreaFilled(false);
         estoqueBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         estoqueBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -53,19 +56,12 @@ private String user;
                 estoqueBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(estoqueBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
+        getContentPane().add(estoqueBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 190, 200));
 
-        compraBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Compra.png")); // NOI18N
-        compraBtn.setContentAreaFilled(false);
-        compraBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        compraBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compraBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(compraBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
+        vendaBtn.setContentAreaFilled(false);
+        vendaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(vendaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 280, 190, 200));
 
-        cadClienteBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\cadClie.png")); // NOI18N
         cadClienteBtn.setContentAreaFilled(false);
         cadClienteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadClienteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +69,8 @@ private String user;
                 cadClienteBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(cadClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+        getContentPane().add(cadClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 280, 200, 200));
 
-        cadVendedorBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\cadVend.png")); // NOI18N
         cadVendedorBtn.setContentAreaFilled(false);
         cadVendedorBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadVendedorBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -83,41 +78,31 @@ private String user;
                 cadVendedorBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(cadVendedorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+        getContentPane().add(cadVendedorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 280, 190, 200));
 
         usuario.setEditable(false);
         usuario.setBackground(new java.awt.Color(204, 102, 255));
-        usuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        usuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         usuario.setForeground(new java.awt.Color(204, 204, 204));
-        usuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(39, 99, 119)));
+        usuario.setBorder(null);
         usuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         usuario.setOpaque(false);
         usuario.setBackground(new java.awt.Color(0,0,0,1));
-        usuario.setText(user);
-        usuario.setHorizontalAlignment(JTextField.CENTER);
+        String[] nome = user.getNome().split(" ");
+        usuario.setText(nome[0]);
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 170, 30));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 120, 30));
 
-        fotoperfil.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\panda-home.png")); // NOI18N
-        fotoperfil.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(39, 99, 119)));
-        fotoperfil.setMinimumSize(new java.awt.Dimension(100, 100));
-        fotoperfil.setPreferredSize(new java.awt.Dimension(187, 196));
-        getContentPane().add(fotoperfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 193, 187));
-
-        fundoHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\ImagemHome.png")); // NOI18N
-        getContentPane().add(fundoHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        fundoHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Home-page.png")); // NOI18N
+        getContentPane().add(fundoHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioActionPerformed
 
     private void cadVendedorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadVendedorBtnActionPerformed
         // TODO add your handling code here:
@@ -126,20 +111,24 @@ private String user;
         setVisible(false);
     }//GEN-LAST:event_cadVendedorBtnActionPerformed
 
-    private void cadClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClienteBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cadClienteBtnActionPerformed
 
     private void estoqueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estoqueBtnActionPerformed
         // TODO add your handling code here:
         EstoqueView estoque = new EstoqueView(this);
         estoque.setVisible(true);
-       setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_estoqueBtnActionPerformed
 
-    private void compraBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraBtnActionPerformed
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_compraBtnActionPerformed
+    }//GEN-LAST:event_usuarioActionPerformed
+
+    private void cadClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClienteBtnActionPerformed
+        // TODO add your handling code here:
+        clienteHomeView clienteView = new clienteHomeView(this);
+        clienteView.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_cadClienteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,9 +167,8 @@ private String user;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeView("Default").setVisible(true);
-                Images img = new Images();
-                
+                new HomeView(null).setVisible(true);
+
             }
         });
     }
@@ -188,10 +176,9 @@ private String user;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadClienteBtn;
     private javax.swing.JButton cadVendedorBtn;
-    private javax.swing.JButton compraBtn;
     private javax.swing.JButton estoqueBtn;
-    private javax.swing.JLabel fotoperfil;
     private javax.swing.JLabel fundoHome;
     private javax.swing.JTextField usuario;
+    private javax.swing.JButton vendaBtn;
     // End of variables declaration//GEN-END:variables
 }

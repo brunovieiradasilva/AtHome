@@ -9,47 +9,50 @@ package modelos;
  * @author Bruno
  */
 public class Produto {
-  public static final String NA = "N/A";
-    private String name, id_produto;
-    private double preco;
- private int quntidadeEstoque;
 
-  public Produto(){
-      
-  }
-  
-    public Produto(String name, double preco, int quntidadeEstoque, String id_produto) {
-        this.name = name;
+    public static final String NA = "Selecione um produto";
+    private String nome, id_produto = "";
+    private String preco;
+    private String quantidade;
+
+    public Produto() {
+
+    }
+
+    public Produto(String nome, String preco, String quantidade, String id_produto) {
+        this.nome = nome;
         this.preco = preco;
-        this.quntidadeEstoque = quntidadeEstoque;
+        this.quantidade = quantidade;
         this.id_produto = id_produto;
     }
-
-    public String getName() {
-        return name;
+ public Produto(String nome, String preco, String quntidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quntidade;
+    }
+ 
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
     }
 
-   
- 
-
-    public int getQuntidadeEstoque() {
-        return quntidadeEstoque;
+    public String getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuntidadeEstoque(int quntidadeEstoque) {
-        this.quntidadeEstoque = quntidadeEstoque;
+    public void setQuantidade(String quntidade) {
+        this.quantidade = quntidade;
     }
 
     public String getId_produto() {
@@ -59,6 +62,10 @@ public class Produto {
     public void setId_produto(String id_produto) {
         this.id_produto = id_produto;
     }
-  
- 
+    
+    @Override
+    public String toString(){
+        return nome;
+    }
+
 }

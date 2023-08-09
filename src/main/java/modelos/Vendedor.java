@@ -16,6 +16,10 @@ public class Vendedor {
         this.usuario = usuario;
         this.senha = senha;
     }
+      
+        public Vendedor(String nome) {
+        this.nome = nome;
+    }
        
     public Vendedor(String nome,String cpf, String usuario, String email, String senha) {
         this.nome = nome;

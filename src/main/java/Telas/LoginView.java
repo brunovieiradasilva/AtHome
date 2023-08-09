@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
+import modelos.Vendedor;
 
 /**
  *
@@ -38,13 +39,14 @@ public class LoginView extends javax.swing.JFrame {
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login  - At Home");
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         usuarioFD.setForeground(new java.awt.Color(51, 51, 51));
-        usuarioFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
+        usuarioFD.setBorder(null);
         usuarioFD.setOpaque(false);
         usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
         usuarioFD.addActionListener(new java.awt.event.ActionListener() {
@@ -57,9 +59,9 @@ public class LoginView extends javax.swing.JFrame {
                 usuarioFDKeyPressed(evt);
             }
         });
-        getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 210, -1));
+        getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 374, 330, 40));
 
-        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         senhaFD.setForeground(new java.awt.Color(51, 51, 51));
         senhaFD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 255)));
         senhaFD.setOpaque(false);
@@ -74,7 +76,7 @@ public class LoginView extends javax.swing.JFrame {
                 senhaFDKeyPressed(evt);
             }
         });
-        getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 210, -1));
+        getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 330, 40));
 
         button.setContentAreaFilled(false);
         button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -83,9 +85,9 @@ public class LoginView extends javax.swing.JFrame {
                 buttonActionPerformed(evt);
             }
         });
-        getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 170, 20));
+        getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 550, 180, 60));
 
-        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\ImagemLogin.png")); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Login-page.png"))); // NOI18N
         fundo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 fundoKeyPressed(evt);
@@ -112,7 +114,7 @@ public class LoginView extends javax.swing.JFrame {
             oi = new CRUD();
             boolean contaExiste = oi.loginVendedor(usuarioFD.getText(), new String(senhaFD.getPassword()));
             if (contaExiste) {
-                HomeView home = new HomeView(usuarioFD.getText());
+                HomeView home = new HomeView((Vendedor) oi.getPorID("vendedor",usuarioFD.getText()));
                 home.setVisible(true);
                 dispose();
 
@@ -122,8 +124,7 @@ public class LoginView extends javax.swing.JFrame {
 
         } catch (InterruptedException | ExecutionException | IOException ex) {
             JOptionPane.showMessageDialog(this, "Usuario ou senha errados!", "Erro no login", JOptionPane.WARNING_MESSAGE);
-            System.out.println("não funfo");
-        }
+        } 
     }//GEN-LAST:event_buttonActionPerformed
 
     private void usuarioFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioFDKeyPressed

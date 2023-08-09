@@ -8,20 +8,20 @@ import connection.CRUD;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import modelos.Vendedor;
+import modelos.Cliente;
 
 /**
  *
  * @author Bruno
  */
-public class CadastroView extends javax.swing.JFrame {
+public class CadastroClienteView extends javax.swing.JFrame {
 
-    private HomeView h;
+    private clienteHomeView h;
 
     /**
      * Creates new form Cadastro
      */
-    public CadastroView(HomeView home) {
+    public CadastroClienteView(clienteHomeView home) {
         h = home;
         initComponents();
     }
@@ -35,16 +35,16 @@ public class CadastroView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        enderecoFD = new javax.swing.JTextField();
+        rgFD = new javax.swing.JTextField();
         nomeFD = new javax.swing.JTextField();
         cpfFD = new javax.swing.JTextField();
-        usuarioFD = new javax.swing.JTextField();
-        senhaFD = new javax.swing.JPasswordField();
         emailFD = new javax.swing.JTextField();
         button = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro vendedor - At Home");
+        setTitle("Cadastro cliente - At Home");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -52,6 +52,40 @@ public class CadastroView extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        enderecoFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        enderecoFD.setForeground(new java.awt.Color(51, 51, 51));
+        enderecoFD.setBorder(null);
+        enderecoFD.setOpaque(false);
+        emailFD.setBackground(new java.awt.Color(0,0,0,1));
+        enderecoFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enderecoFDActionPerformed(evt);
+            }
+        });
+        enderecoFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                enderecoFDKeyPressed(evt);
+            }
+        });
+        getContentPane().add(enderecoFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, 320, 40));
+
+        rgFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rgFD.setForeground(new java.awt.Color(51, 51, 51));
+        rgFD.setBorder(null);
+        rgFD.setOpaque(false);
+        cpfFD.setBackground(new java.awt.Color(0,0,0,1));
+        rgFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rgFDActionPerformed(evt);
+            }
+        });
+        rgFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rgFDKeyPressed(evt);
+            }
+        });
+        getContentPane().add(rgFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 320, 30));
 
         nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeFD.setForeground(new java.awt.Color(51, 51, 51));
@@ -63,43 +97,19 @@ public class CadastroView extends javax.swing.JFrame {
                 nomeFDKeyPressed(evt);
             }
         });
-        getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 294, 310, 30));
+        getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 320, 40));
 
         cpfFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cpfFD.setForeground(new java.awt.Color(51, 51, 51));
         cpfFD.setBorder(null);
         cpfFD.setOpaque(false);
-        emailFD.setBackground(new java.awt.Color(0,0,0,1));
+        cpfFD.setBackground(new java.awt.Color(0,0,0,1));
         cpfFD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cpfFDKeyPressed(evt);
             }
         });
-        getContentPane().add(cpfFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 310, 30));
-
-        usuarioFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        usuarioFD.setForeground(new java.awt.Color(51, 51, 51));
-        usuarioFD.setBorder(null);
-        usuarioFD.setOpaque(false);
-        usuarioFD.setBackground(new java.awt.Color(0,0,0,1));
-        usuarioFD.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                usuarioFDKeyPressed(evt);
-            }
-        });
-        getContentPane().add(usuarioFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 374, 310, 30));
-
-        senhaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        senhaFD.setForeground(new java.awt.Color(51, 51, 51));
-        senhaFD.setBorder(null);
-        senhaFD.setOpaque(false);
-        senhaFD.setBackground(new java.awt.Color(0,0,0,1));
-        senhaFD.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                senhaFDKeyPressed(evt);
-            }
-        });
-        getContentPane().add(senhaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 624, 310, 30));
+        getContentPane().add(cpfFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 320, 40));
 
         emailFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         emailFD.setForeground(new java.awt.Color(51, 51, 51));
@@ -111,7 +121,7 @@ public class CadastroView extends javax.swing.JFrame {
                 emailFDKeyPressed(evt);
             }
         });
-        getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 310, 30));
+        getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 320, 30));
 
         button.setContentAreaFilled(false);
         button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -122,7 +132,7 @@ public class CadastroView extends javax.swing.JFrame {
         });
         getContentPane().add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 680, 200, 50));
 
-        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\cadastro-page.png")); // NOI18N
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadCliente-page.png"))); // NOI18N
         getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
 
         pack();
@@ -134,19 +144,19 @@ public class CadastroView extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             CRUD oi = new CRUD();
-            boolean checkIfUsuarioExist = oi.checkIfExist("vendedor", usuarioFD.getText()), checkEmail = true;
+            boolean checkIfClienteExist = oi.checkIfExist("cliente", cpfFD.getText()), checkEmail = true;
 
             //vendo se o meail está no formato certo
             checkEmail = emailFD.getText().contains("@") && (emailFD.getText().endsWith(".com") || emailFD.getText().endsWith(".br"));
 
-            if (!checkIfUsuarioExist && checkEmail) {
-                Vendedor vendedor = new Vendedor(nomeFD.getText(), cpfFD.getText(), usuarioFD.getText(), emailFD.getText(), new String(senhaFD.getPassword()));
-                oi.add(vendedor);
+            if (!checkIfClienteExist && checkEmail) {
+                Cliente cliente = new Cliente(nomeFD.getText(),cpfFD.getText(),emailFD.getText(),rgFD.getText(), enderecoFD.getText());
+                oi.add(cliente);
                 dispose();
-                JOptionPane.showMessageDialog(this, "Vendedor adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
+                JOptionPane.showMessageDialog(this, "Cliente adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
             } else {
-                if (checkIfUsuarioExist) {
-                    JOptionPane.showMessageDialog(this, "Usuario já existe.", "Erro no cadastro", HEIGHT);
+                if (checkIfClienteExist) {
+                    JOptionPane.showMessageDialog(this, "Cliente já existe.", "Erro no cadastro", HEIGHT);
 
                 } else if (!checkEmail) {
                     JOptionPane.showMessageDialog(this, "Email não corresponde ao formato adequado.", "Erro no cadastro", HEIGHT);
@@ -162,28 +172,36 @@ public class CadastroView extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-                h.setVisible(true);
+        h.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void rgFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rgFDActionPerformed
+
+    private void enderecoFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enderecoFDActionPerformed
 
     private void nomeFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeFDKeyPressed
 enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_nomeFDKeyPressed
 
-    private void usuarioFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioFDKeyPressed
+    private void cpfFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpfFDKeyPressed
 enterPressed(evt);        // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioFDKeyPressed
+    }//GEN-LAST:event_cpfFDKeyPressed
+
+    private void rgFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rgFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_rgFDKeyPressed
 
     private void emailFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFDKeyPressed
 enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_emailFDKeyPressed
 
-    private void cpfFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpfFDKeyPressed
+    private void enderecoFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enderecoFDKeyPressed
 enterPressed(evt);        // TODO add your handling code here:
-    }//GEN-LAST:event_cpfFDKeyPressed
-
-    private void senhaFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senhaFDKeyPressed
-enterPressed(evt);        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaFDKeyPressed
+    }//GEN-LAST:event_enderecoFDKeyPressed
 
      private void enterPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -207,21 +225,23 @@ enterPressed(evt);        // TODO add your handling code here:
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroView(null).setVisible(true);
+                new CadastroClienteView(null).setVisible(true);
             }
         });
     }
@@ -230,9 +250,9 @@ enterPressed(evt);        // TODO add your handling code here:
     private javax.swing.JButton button;
     private javax.swing.JTextField cpfFD;
     private javax.swing.JTextField emailFD;
+    private javax.swing.JTextField enderecoFD;
     private javax.swing.JLabel fundo;
     private javax.swing.JTextField nomeFD;
-    private javax.swing.JPasswordField senhaFD;
-    private javax.swing.JTextField usuarioFD;
+    private javax.swing.JTextField rgFD;
     // End of variables declaration//GEN-END:variables
 }

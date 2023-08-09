@@ -1,11 +1,12 @@
 C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\connection\FirebaseInitialize.java
-C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\Estoque.java
+C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\CadastroView.java
+C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\LoginView.java
 C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\modelos\Images.java
-C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\connection\CRUDData.java
+C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\connection\CRUD.java
 C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\modelos\Vendas.java
-C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\homes.java
-C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\Cadastro.java
+C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\HomeView.java
+C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\modelos\produtoTableModel.java
 C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\modelos\Produto.java
 C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\modelos\Vendedor.java
-C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\Login.java
+C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\Telas\EstoqueView.java
 C:\Users\Bruno\Documents\NetBeansProjects\trabalhodejava\src\main\java\modelos\Cliente.java
