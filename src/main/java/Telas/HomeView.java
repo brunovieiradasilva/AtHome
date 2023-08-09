@@ -125,7 +125,7 @@ public class HomeView extends javax.swing.JFrame {
 
     private void cadClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClienteBtnActionPerformed
         // TODO add your handling code here:
-        ClienteHomeView clienteView = new ClienteHomeView(this);
+        clienteHomeView clienteView = new clienteHomeView(this);
         clienteView.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_cadClienteBtnActionPerformed

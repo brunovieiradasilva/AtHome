@@ -96,7 +96,7 @@ public class CRUD {
             List<QueryDocumentSnapshot> documentos = tdCliente.get().getDocuments();
             Produto[] lista = new Produto[documentos.size()];
             for (QueryDocumentSnapshot document : documentos) {
-                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.get("quantidade", int.class), document.getId());
+                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.getString("quantidade"), document.getId());
 
                 i++;
             }
@@ -104,7 +104,7 @@ public class CRUD {
 
             return lista;
         } catch (Exception e) {
-            Produto p = new Produto("erro ao carregar", "0", 0);
+            Produto p = new Produto("erro ao carregar", "0", "0");
             Produto[] prod = {p};
             System.out.println("erro excesão");
             e.printStackTrace();
@@ -125,13 +125,13 @@ public class CRUD {
 // future.get() blocks on response
             Produto lista[] = {null, null};
             for (QueryDocumentSnapshot document : documentos.get().getDocuments()) {
-                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.get("quantidade", int.class), document.getId());
+                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.getString("quantidade"), document.getId());
 
                 i++;
             }
             return lista;
         } catch (Exception e) {
-            Produto p = new Produto("erro ao carregar", "0", 0);
+            Produto p = new Produto("erro ao carregar", "0", "0");
             Produto[] prod = {p};
             System.out.println("erro excesão 2");
             return prod;
@@ -187,7 +187,7 @@ public class CRUD {
                         Cliente cliente = new Cliente(document.getString("nome"), document.getString("cpf"), document.getString("email"), document.getString("rg"), document.getString("endereco"));
                         return cliente;
                     case "produto":
-                        Produto produto = new Produto(document.getString("nome"), document.getString("preco"), document.get("quantidade", int.class), document.getId());
+                        Produto produto = new Produto(document.getString("nome"), document.getString("preco"), document.getString("quantidade"), document.getId());
                         return produto;
                     default:
                         return null;

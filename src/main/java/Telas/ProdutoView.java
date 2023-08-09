@@ -152,7 +152,7 @@ public class ProdutoView extends javax.swing.JFrame {
         CRUD oi;
         try {
             oi = new CRUD();
-            Produto produto = new Produto(prdNome.getText(),prdPreco.getText(), Integer.parseInt(prdQuantidade.getText()));
+            Produto produto = new Produto(prdNome.getText(),prdPreco.getText(), prdQuantidade.getText());
             oi.add(produto);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Algum erro ocorreu!", "Erro ao adicionar item.", HEIGHT);

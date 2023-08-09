@@ -378,7 +378,7 @@ public class EstoqueView extends javax.swing.JFrame {
         prdNome.setText(p.getNome());
         prdID.setText(p.getId_produto());
         prdPreco.setText(p.getPreco());
-        prdQuantidade.setText(Integer.toString(p.getQuantidade()));
+        prdQuantidade.setText(p.getQuantidade());
         removeBtn.setEnabled(true);
         editBtn.setEnabled(true);
 

@@ -16,12 +16,12 @@ import modelos.Cliente;
  */
 public class CadastroClienteView extends javax.swing.JFrame {
 
-    private ClienteHomeView h;
+    private clienteHomeView h;
 
     /**
      * Creates new form Cadastro
      */
-    public CadastroClienteView(ClienteHomeView home) {
+    public CadastroClienteView(clienteHomeView home) {
         h = home;
         initComponents();
     }
