@@ -14,7 +14,10 @@ import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import modelos.*;
 
@@ -29,7 +32,7 @@ public class CRUD {
             FirebaseInitialize conexao = new FirebaseInitialize();
             db = conexao.iniciarConexao();
         } catch (IOException e) {
-            System.out.println("erro ao iniciar a conexão");
+            System.out.println("ja deu merda");
         }
     }
 
@@ -41,7 +44,7 @@ public class CRUD {
             ApiFuture<WriteResult> future = db.collection("cliente").document(cliente.getCpf()).set(cliente);
             return true;
         } catch (Exception e) {
- 
+            System.out.println("merda no CRUD");
             return false;
         }
     }
@@ -96,18 +99,17 @@ public class CRUD {
             List<QueryDocumentSnapshot> documentos = tdCliente.get().getDocuments();
             Produto[] lista = new Produto[documentos.size()];
             for (QueryDocumentSnapshot document : documentos) {
-                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.get("quantidade", int.class), document.getId());
+                lista[i] = new Produto(document.getString("nome"), document.getDouble("preco"), document.get("quantidade", int.class), document.getId());
 
                 i++;
             }
-            System.out.println("try");
+                        System.out.println("try");
 
             return lista;
         } catch (Exception e) {
-            Produto p = new Produto("erro ao carregar", "0", 0);
+            Produto p = new Produto("erro ao carregar",0.0,0);
             Produto[] prod = {p};
             System.out.println("erro excesão");
-            e.printStackTrace();
             return prod;
         }
 
@@ -118,20 +120,21 @@ public class CRUD {
 
         try {
 // asynchronously retrieve all documents
-            CollectionReference vend = db.collection("estoque");
+           CollectionReference vend = db.collection("estoque");
             Query query = vend.whereEqualTo("nome", nome);
             ApiFuture<QuerySnapshot> documentos = query.get();
 
 // future.get() blocks on response
+         
             Produto lista[] = {null, null};
             for (QueryDocumentSnapshot document : documentos.get().getDocuments()) {
-                lista[i] = new Produto(document.getString("nome"), document.getString("preco"), document.get("quantidade", int.class), document.getId());
+                lista[i] = new Produto(document.getString("nome"), document.getDouble("preco"), document.get("quantidade", int.class), document.getId());
 
                 i++;
             }
             return lista;
         } catch (Exception e) {
-            Produto p = new Produto("erro ao carregar", "0", 0);
+            Produto p = new Produto("erro ao carregar",0.0,0);
             Produto[] prod = {p};
             System.out.println("erro excesão 2");
             return prod;
@@ -187,7 +190,7 @@ public class CRUD {
                         Cliente cliente = new Cliente(document.getString("nome"), document.getString("cpf"), document.getString("email"), document.getString("rg"), document.getString("endereco"));
                         return cliente;
                     case "produto":
-                        Produto produto = new Produto(document.getString("nome"), document.getString("preco"), document.get("quantidade", int.class), document.getId());
+                        Produto produto = new Produto(document.getString("nome"), document.getDouble("preco"), document.get("quantidade", int.class), document.getId());
                         return produto;
                     default:
                         return null;
@@ -197,24 +200,6 @@ public class CRUD {
             }
         } catch (Exception e) {
             return null;
-        }
-    }
-
-    public boolean edit(String colecao, String ID, String field, String newValue) {
-        try {
-
-            // Update an existing document
-            DocumentReference docRef = db.collection(colecao).document(ID);
-
-// (async) Update one field
-            ApiFuture<WriteResult> future = docRef.update(field, newValue);
-
-// ...
-            WriteResult result = future.get();
-            return true;
-
-        } catch (Exception e) {
-            return false;
         }
     }
 }

@@ -57,7 +57,7 @@ public class EstoqueView extends javax.swing.JFrame {
         removeBtn = new javax.swing.JMenu();
         editBtn = new javax.swing.JMenu();
         editNome = new javax.swing.JMenuItem();
-        editPreco = new javax.swing.JMenuItem();
+        editId = new javax.swing.JMenuItem();
         editQuanti = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -240,14 +240,14 @@ public class EstoqueView extends javax.swing.JFrame {
             });
             editBtn.add(editNome);
 
-            editPreco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-            editPreco.setText("preço");
-            editPreco.addActionListener(new java.awt.event.ActionListener() {
+            editId.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+            editId.setText("ID");
+            editId.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    editPrecoActionPerformed(evt);
+                    editIdActionPerformed(evt);
                 }
             });
-            editBtn.add(editPreco);
+            editBtn.add(editId);
 
             editQuanti.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
             editQuanti.setText("quantidade");
@@ -273,55 +273,18 @@ public class EstoqueView extends javax.swing.JFrame {
 
     private void editQuantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editQuantiActionPerformed
         // TODO add your handling code here:
-        EditView edit = new EditView(estoqueList.getSelectedValue(), "quantidade");
-        edit.setVisible(true);
-        limparLista();
-
     }//GEN-LAST:event_editQuantiActionPerformed
 
-    private void editPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPrecoActionPerformed
+    private void editIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editIdActionPerformed
         // TODO add your handling code here:
-        EditView edit = new EditView(estoqueList.getSelectedValue(), "preco");
-        edit.setVisible(true);
-        limparLista();
-
-    }//GEN-LAST:event_editPrecoActionPerformed
+    }//GEN-LAST:event_editIdActionPerformed
 
     private void editNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNomeActionPerformed
         // TODO add your handling code here:
-        EditView edit = new EditView(estoqueList.getSelectedValue(), "nome");
-        edit.setVisible(true);
-        limparLista();
-
     }//GEN-LAST:event_editNomeActionPerformed
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
-        if (removeBtn.isEnabled()) {
-            CRUD oi;
-            Object[] options = {"Confirmar", "Cancelar"};
-
-            int i = JOptionPane.showOptionDialog(this, "Excluir item selecionado?", "Excluir Item", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-
-            try {
-                oi = new CRUD();
-                if (i == 0) {
-
-                    Produto p = estoqueList.getSelectedValue();
-                    oi.delete("estoque", p.getId_produto());
-                    ((DefaultListModel) estoqueList.getModel()).remove(estoqueList.getSelectedIndex());
-                    limparLista();
-                    JOptionPane.showMessageDialog(this, "Item deletado do estoque", "Exclusão de produto", HEIGHT);
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "exclusão calcelada", "Exclusão de produto", HEIGHT);
-
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Ocorreu um erro, tente novamente!", "Erro ao deletar", HEIGHT);
-
-            }
-        }
     }//GEN-LAST:event_removeBtnActionPerformed
 
     private void removeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeBtnMouseClicked
@@ -377,7 +340,7 @@ public class EstoqueView extends javax.swing.JFrame {
         Produto p = estoqueList.getSelectedValue();
         prdNome.setText(p.getNome());
         prdID.setText(p.getId_produto());
-        prdPreco.setText(p.getPreco());
+        prdPreco.setText(Double.toString(p.getPreco()));
         prdQuantidade.setText(Integer.toString(p.getQuantidade()));
         removeBtn.setEnabled(true);
         editBtn.setEnabled(true);
@@ -394,18 +357,16 @@ public class EstoqueView extends javax.swing.JFrame {
             if (pesquisaBox.getSelectedItem() != null && !pesquisaFD.getText().toLowerCase().equals("")) {
                 if (pesquisaBox.getSelectedItem().equals("NOME")) {
 
-                    for (Produto produto : oi.getTodosProdutos()) {
-                        if (produto.getNome().equalsIgnoreCase(pesquisaFD.getText())) {
-                            model.addElement(produto);
-                        }
+                    for (Produto produto : oi.getTodosProdutos(pesquisaFD.getText().toLowerCase())) {
+                        model.addElement(produto);
                     }
 
                 } else {
-                    model.addElement((Produto) oi.getPorID("produtos", pesquisaFD.getText().toLowerCase()));
+                  model.addElement( (Produto) oi.getPorID("produtos", pesquisaFD.getText().toLowerCase()));
                 }
 
             }
-            //  estoqueList.setModel(model);
+          //  estoqueList.setModel(model);
         } catch (Exception e) {
 
         }
@@ -463,8 +424,8 @@ public class EstoqueView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu addBtn;
     private javax.swing.JMenu editBtn;
+    private javax.swing.JMenuItem editId;
     private javax.swing.JMenuItem editNome;
-    private javax.swing.JMenuItem editPreco;
     private javax.swing.JMenuItem editQuanti;
     private javax.swing.JList<Produto> estoqueList;
     private javax.swing.JLabel fundo;
