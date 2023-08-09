@@ -5,6 +5,7 @@
 package Telas;
 
 import connection.CRUD;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import modelos.Cliente;
@@ -15,12 +16,12 @@ import modelos.Cliente;
  */
 public class CadastroClienteView extends javax.swing.JFrame {
 
-    private clienteHomeView h;
+    private ClienteHomeView h;
 
     /**
      * Creates new form Cadastro
      */
-    public CadastroClienteView(clienteHomeView home) {
+    public CadastroClienteView(ClienteHomeView home) {
         h = home;
         initComponents();
     }
@@ -52,8 +53,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        enderecoFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        enderecoFD.setForeground(new java.awt.Color(153, 153, 153));
+        enderecoFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        enderecoFD.setForeground(new java.awt.Color(51, 51, 51));
         enderecoFD.setBorder(null);
         enderecoFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
@@ -62,10 +63,15 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 enderecoFDActionPerformed(evt);
             }
         });
+        enderecoFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                enderecoFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(enderecoFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, 320, 40));
 
-        rgFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        rgFD.setForeground(new java.awt.Color(153, 153, 153));
+        rgFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rgFD.setForeground(new java.awt.Color(51, 51, 51));
         rgFD.setBorder(null);
         rgFD.setOpaque(false);
         cpfFD.setBackground(new java.awt.Color(0,0,0,1));
@@ -74,27 +80,47 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 rgFDActionPerformed(evt);
             }
         });
+        rgFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rgFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(rgFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 320, 30));
 
-        nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        nomeFD.setForeground(new java.awt.Color(153, 153, 153));
+        nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeFD.setForeground(new java.awt.Color(51, 51, 51));
         nomeFD.setBorder(null);
         nomeFD.setOpaque(false);
         nomeFD.setBackground(new java.awt.Color(0,0,0,1));
+        nomeFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomeFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(nomeFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 320, 40));
 
-        cpfFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cpfFD.setForeground(new java.awt.Color(153, 153, 153));
+        cpfFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cpfFD.setForeground(new java.awt.Color(51, 51, 51));
         cpfFD.setBorder(null);
         cpfFD.setOpaque(false);
         cpfFD.setBackground(new java.awt.Color(0,0,0,1));
+        cpfFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cpfFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(cpfFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 320, 40));
 
-        emailFD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        emailFD.setForeground(new java.awt.Color(153, 153, 153));
+        emailFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailFD.setForeground(new java.awt.Color(51, 51, 51));
         emailFD.setBorder(null);
         emailFD.setOpaque(false);
         emailFD.setBackground(new java.awt.Color(0,0,0,1));
+        emailFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                emailFDKeyPressed(evt);
+            }
+        });
         getContentPane().add(emailFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 320, 30));
 
         button.setContentAreaFilled(false);
@@ -157,6 +183,31 @@ public class CadastroClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_enderecoFDActionPerformed
 
+    private void nomeFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeFDKeyPressed
+
+    private void cpfFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpfFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_cpfFDKeyPressed
+
+    private void rgFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rgFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_rgFDKeyPressed
+
+    private void emailFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_emailFDKeyPressed
+
+    private void enderecoFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enderecoFDKeyPressed
+enterPressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_enderecoFDKeyPressed
+
+     private void enterPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            buttonActionPerformed(null);
+        }
+    }
     /**
      * @param args the command line arguments
      */

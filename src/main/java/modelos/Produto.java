@@ -12,20 +12,20 @@ public class Produto {
 
     public static final String NA = "Selecione um produto";
     private String nome, id_produto = "";
-    private double preco;
+    private String preco;
     private int quantidade;
 
     public Produto() {
 
     }
 
-    public Produto(String nome, double preco, int quantidade, String id_produto) {
+    public Produto(String nome, String preco, int quantidade, String id_produto) {
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
         this.id_produto = id_produto;
     }
- public Produto(String nome, double preco, int quntidade) {
+ public Produto(String nome, String preco, int quntidade) {
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quntidade;
@@ -39,11 +39,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
     }
 
