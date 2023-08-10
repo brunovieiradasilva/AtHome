@@ -42,6 +42,8 @@ public class VendaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        totalc = new javax.swing.JLabel();
+        comi = new javax.swing.JLabel();
         trashBtn = new javax.swing.JButton();
         novoClienteBtn = new javax.swing.JButton();
         label = new javax.swing.JLabel();
@@ -67,6 +69,16 @@ public class VendaView extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        totalc.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        totalc.setForeground(new java.awt.Color(255, 255, 255));
+        totalc.setText("total: ");
+        getContentPane().add(totalc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, -1, -1));
+
+        comi.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        comi.setForeground(new java.awt.Color(255, 255, 255));
+        comi.setText("Comissão: ");
+        getContentPane().add(comi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 20, -1, -1));
 
         trashBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 22)); // NOI18N
         trashBtn.setForeground(new java.awt.Color(204, 204, 204));
@@ -257,6 +269,7 @@ public class VendaView extends javax.swing.JFrame {
                     qtdModel.addElement(edit.textField.getText());
                     model.addElement(estoqueList.getSelectedValue());
                     edit.dispose();
+                    calcularComi();
                 }
             });
 
@@ -293,11 +306,11 @@ public class VendaView extends javax.swing.JFrame {
                 quantidades[i] = qtdList.getModel().getElementAt(i);
                 valores[i] = vendaList.getModel().getElementAt(i).getPreco();
             }
-            
+
             List<String> produtoList = Arrays.asList(produtos);
-              List<String> quantidadeList = Arrays.asList(quantidades);
-                List<String> valoresList = Arrays.asList(valores);
-            Vendas venda = new Vendas(h.user.getUsuario(), clienteList.getSelectedValue().getCpf(),produtoList,quantidadeList,valoresList);
+            List<String> quantidadeList = Arrays.asList(quantidades);
+            List<String> valoresList = Arrays.asList(valores);
+            Vendas venda = new Vendas(h.user.getUsuario(), clienteList.getSelectedValue().getCpf(), produtoList, quantidadeList, valoresList);
             oi.add(venda);
             ObrigadoView obg = new ObrigadoView(h);
             obg.setVisible(true);
@@ -342,7 +355,7 @@ public class VendaView extends javax.swing.JFrame {
         DefaultListModel<Produto> qtdModel = (DefaultListModel) qtdList.getModel();
         vendaModel.removeElementAt(vendaList.getSelectedIndex());
         qtdModel.removeElementAt(qtdList.getSelectedIndex());
-
+        calcularComi();
     }//GEN-LAST:event_trashBtnActionPerformed
     protected void atualizarClienteList(String nome) {
         DefaultListModel<Cliente> Model = (DefaultListModel) clienteList.getModel();
@@ -361,6 +374,16 @@ public class VendaView extends javax.swing.JFrame {
             System.out.println("erro excesão 2");
 
         }
+    }
+
+    private void calcularComi() {
+        float total = 0;
+        for (int i =0;i < vendaList.getModel().getSize();i++){
+            total = Float.parseFloat(qtdList.getModel().getElementAt(i)) *Float.parseFloat(vendaList.getModel().getElementAt(i).getPreco());
+        }    
+        totalc.setText("total: "+ Float.toString(total));
+        total *= 0.01;
+        comi.setText("Comissão: "+Float.toString(total));
     }
 
     /**
@@ -401,6 +424,7 @@ public class VendaView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JList<Cliente> clienteList;
+    private javax.swing.JLabel comi;
     private javax.swing.JButton comprarBtn;
     private javax.swing.JList<Produto> estoqueList;
     private javax.swing.JLabel fundo;
@@ -412,6 +436,7 @@ public class VendaView extends javax.swing.JFrame {
     private javax.swing.JScrollPane panel3;
     private javax.swing.JTextField pesquisaFD;
     private javax.swing.JList<String> qtdList;
+    private javax.swing.JLabel totalc;
     private javax.swing.JButton trashBtn;
     private javax.swing.JList<Produto> vendaList;
     // End of variables declaration//GEN-END:variables
