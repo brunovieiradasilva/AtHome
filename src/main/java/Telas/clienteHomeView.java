@@ -53,6 +53,11 @@ public class clienteHomeView extends javax.swing.JFrame {
         getContentPane().add(CadClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 200, 200));
 
         historicoBtn.setContentAreaFilled(false);
+        historicoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(historicoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 273, 200, 200));
 
         usuario.setEditable(false);
@@ -95,6 +100,13 @@ public class clienteHomeView extends javax.swing.JFrame {
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioActionPerformed
+
+    private void historicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoBtnActionPerformed
+        // TODO add your handling code here:
+        HistoricoVendasView his = new HistoricoVendasView(this);
+        his.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_historicoBtnActionPerformed
 
     /**
      * @param args the command line arguments

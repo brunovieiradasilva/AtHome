@@ -4,7 +4,6 @@
  */
 package Telas;
 
-import com.google.cloud.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,10 +16,17 @@ import java.util.Locale;
  */
 public class ObrigadoView extends javax.swing.JFrame {
 
+    private HomeView h;
+
     /**
      * Creates new form Obrigado
      */
     public ObrigadoView() {
+        initComponents();
+    }
+
+    public ObrigadoView(HomeView home) {
+        h = home;
         initComponents();
     }
 
@@ -39,8 +45,12 @@ public class ObrigadoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("At Home");
-        setPreferredSize(new java.awt.Dimension(1280, 800));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setContentAreaFilled(false);
@@ -74,8 +84,13 @@ public class ObrigadoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        h.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -104,7 +119,7 @@ public class ObrigadoView extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -42,7 +42,6 @@ public class EstoqueView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pesquisaBtn = new javax.swing.JButton();
         prdNome = new javax.swing.JTextField();
         panel = new javax.swing.JScrollPane();
         estoqueList = new javax.swing.JList<>();
@@ -69,20 +68,6 @@ public class EstoqueView extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pesquisaBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        pesquisaBtn.setIcon(new javax.swing.ImageIcon("src\\main\\java\\imagens\\search.png"));
-        pesquisaBtn.setToolTipText("");
-        pesquisaBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 5, 0));
-        pesquisaBtn.setContentAreaFilled(false);
-        pesquisaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pesquisaBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        pesquisaBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisaBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(pesquisaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 94, 140, 40));
 
         prdNome.setEditable(false);
         prdNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -383,11 +368,6 @@ public class EstoqueView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_estoqueListMouseClicked
 
-    private void pesquisaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaBtnActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_pesquisaBtnActionPerformed
-
     private void pesquisaFDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisaFDKeyTyped
         // TODO add your handling code here:
 
@@ -479,7 +459,6 @@ public class EstoqueView extends javax.swing.JFrame {
     private javax.swing.JLabel fundo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane panel;
-    private javax.swing.JButton pesquisaBtn;
     private javax.swing.JTextField pesquisaFD;
     private javax.swing.JTextField prdID;
     private javax.swing.JTextField prdNome;

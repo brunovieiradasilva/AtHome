@@ -5,10 +5,17 @@
 package Telas;
 
 import connection.CRUD;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import modelos.Cliente;
 import modelos.Produto;
+import modelos.Vendas;
 
 /**
  *
@@ -16,10 +23,13 @@ import modelos.Produto;
  */
 public class VendaView extends javax.swing.JFrame {
 
+    HomeView h;
+
     /**
      * Creates new form VendaView
      */
-    public VendaView() {
+    public VendaView(HomeView home) {
+        h = home;
         initComponents();
     }
 
@@ -32,52 +42,326 @@ public class VendaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        trashBtn = new javax.swing.JButton();
+        novoClienteBtn = new javax.swing.JButton();
+        label = new javax.swing.JLabel();
+        pesquisaFD = new javax.swing.JTextField();
+        panel3 = new javax.swing.JScrollPane();
+        clienteList = new javax.swing.JList<>();
+        addBtn = new javax.swing.JButton();
+        comprarBtn = new javax.swing.JButton();
+        panel2 = new javax.swing.JScrollPane();
+        qtdList = new javax.swing.JList<>();
+        panel1 = new javax.swing.JScrollPane();
+        vendaList = new javax.swing.JList<>();
         panel = new javax.swing.JScrollPane();
         estoqueList = new javax.swing.JList<>();
         fundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Venda - At Home");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel.setBorder(null);
+        trashBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 22)); // NOI18N
+        trashBtn.setForeground(new java.awt.Color(204, 204, 204));
+        trashBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\lixo.png")); // NOI18N
+        trashBtn.setContentAreaFilled(false);
+        trashBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        trashBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trashBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(trashBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, 70, 80));
+
+        novoClienteBtn.setFont(new java.awt.Font("Leelawadee UI", 1, 22)); // NOI18N
+        novoClienteBtn.setForeground(new java.awt.Color(102, 102, 102));
+        novoClienteBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\mais2.png")); // NOI18N
+        novoClienteBtn.setText("Adicionar cliente");
+        novoClienteBtn.setContentAreaFilled(false);
+        novoClienteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        novoClienteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novoClienteBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(novoClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 240, -1));
+
+        label.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        label.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 210, 30));
+
+        pesquisaFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pesquisaFD.setForeground(new java.awt.Color(51, 51, 51));
+        pesquisaFD.setToolTipText("");
+        pesquisaFD.setBorder(null);
+        pesquisaFD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pesquisaFD.setOpaque(false);
+        pesquisaFD.setBackground(new java.awt.Color(0,0,0,1));
+        pesquisaFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisaFDActionPerformed(evt);
+            }
+        });
+        pesquisaFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pesquisaFDKeyTyped(evt);
+            }
+        });
+        getContentPane().add(pesquisaFD, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 195, 140, -1));
+
+        panel3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        DefaultListModel<Cliente> ClienteModel = new DefaultListModel<>();
+        clienteList.setBackground(new java.awt.Color(44, 44, 52));
+        clienteList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        clienteList.setForeground(new java.awt.Color(204, 204, 204));
+        clienteList.setModel(ClienteModel);
+        CRUD oi;
+        try{
+            oi = new CRUD();
+
+            for(Cliente cliente: oi.getTodosCliente()){
+                ClienteModel.addElement(cliente);
+                System.out.println("try 2");
+
+            }
+        }catch(Exception e){
+            System.out.println("erro excesão 2");
+
+        }
+        DefaultListCellRenderer renderers =  (DefaultListCellRenderer)estoqueList.getCellRenderer();
+
+        renderers.setHorizontalAlignment(JLabel.CENTER);
+        clienteList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clienteListMouseClicked(evt);
+            }
+        });
+        panel3.setViewportView(clienteList);
+
+        getContentPane().add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 210, 250));
+
+        addBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\mais.png")); // NOI18N
+        addBtn.setContentAreaFilled(false);
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addBtn.setEnabled(false);
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 590, -1, -1));
+
+        comprarBtn.setContentAreaFilled(false);
+        comprarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comprarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comprarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comprarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 640, 200, 50));
+
+        panel2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        DefaultListModel<String> qtdModel = new DefaultListModel<>();
+        qtdList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        qtdList.setForeground(new java.awt.Color(28, 28, 36));
+        qtdList.setModel(qtdModel);
+        qtdList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                qtdListMouseClicked(evt);
+            }
+        });
+        panel2.setViewportView(qtdList);
+
+        getContentPane().add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 150, 50, 490));
+
+        panel1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        DefaultListModel<Produto> Model = new DefaultListModel<>();
+        vendaList.setBorder(null);
+        vendaList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        vendaList.setForeground(new java.awt.Color(28, 28, 36));
+        vendaList.setModel(Model);
+        vendaList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vendaListMouseClicked(evt);
+            }
+        });
+        panel1.setViewportView(vendaList);
+
+        getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, 260, 490));
+
         panel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         DefaultListModel<Produto> listModel = new DefaultListModel<>();
         estoqueList.setBorder(null);
         estoqueList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        estoqueList.setForeground(new java.awt.Color(51, 51, 51));
+        estoqueList.setForeground(new java.awt.Color(28, 28, 36));
         estoqueList.setModel(listModel);
-        CRUD oi;
         try{
             oi = new CRUD();
 
             for(Produto produto: oi.getTodosProdutos()){
                 listModel.addElement(produto);
-            }}catch(Exception e){
+                System.out.println("try 2");
 
             }
+        }catch(Exception e){
+            System.out.println("erro excesão 2");
 
-            DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();
-            renderer.setHorizontalAlignment(JLabel.CENTER);
-            estoqueList.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    estoqueListMouseClicked(evt);
-                }
-            });
-            panel.setViewportView(estoqueList);
+        }
 
-            getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 320, 550));
+        DefaultListCellRenderer renderer =  (DefaultListCellRenderer)estoqueList.getCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        estoqueList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                estoqueListMouseClicked(evt);
+            }
+        });
+        panel.setViewportView(estoqueList);
 
-            fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Vendas-page.png")); // NOI18N
-            getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 320, 530));
 
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Vendas-page.png")); // NOI18N
+        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
 
     private void estoqueListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estoqueListMouseClicked
         // TODO add your handling code here:
-      
+        Produto p = estoqueList.getSelectedValue();
+        addBtn.setEnabled(true);
     }//GEN-LAST:event_estoqueListMouseClicked
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+
+        DefaultListModel model = (DefaultListModel) vendaList.getModel();
+        DefaultListModel qtdModel = (DefaultListModel) qtdList.getModel();
+
+        if (!model.contains(estoqueList.getSelectedValue())) {
+            DefaultEditView edit = new DefaultEditView();
+            edit.setVisible(true);
+            edit.salvarBtn.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    qtdModel.addElement(edit.textField.getText());
+                    model.addElement(estoqueList.getSelectedValue());
+                    edit.dispose();
+                }
+            });
+
+        }
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void vendaListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendaListMouseClicked
+        // TODO add your handling code here:
+        qtdList.setSelectedIndex(vendaList.getSelectedIndex());
+
+    }//GEN-LAST:event_vendaListMouseClicked
+
+    private void qtdListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qtdListMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qtdListMouseClicked
+
+    private void comprarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarBtnActionPerformed
+        // TODO add your handling code here:
+        CRUD oi;
+        System.out.println("crud");
+
+        try {
+            System.out.println("try");
+
+            oi = new CRUD();
+            String[] produtos = new String[vendaList.getModel().getSize()];
+            String[] valores = new String[vendaList.getModel().getSize()];
+            String[] quantidades = new String[vendaList.getModel().getSize()];
+
+            for (int i = 0; i < vendaList.getModel().getSize(); i++) {
+                System.out.println("loop");
+
+                produtos[i] = vendaList.getModel().getElementAt(i).getNome();
+                quantidades[i] = qtdList.getModel().getElementAt(i);
+                valores[i] = vendaList.getModel().getElementAt(i).getPreco();
+            }
+            
+            List<String> produtoList = Arrays.asList(produtos);
+              List<String> quantidadeList = Arrays.asList(quantidades);
+                List<String> valoresList = Arrays.asList(valores);
+            Vendas venda = new Vendas(h.user.getUsuario(), clienteList.getSelectedValue().getCpf(),produtoList,quantidadeList,valoresList);
+            oi.add(venda);
+            ObrigadoView obg = new ObrigadoView(h);
+            obg.setVisible(true);
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Selecione um cliente!", "Erro na venda", HEIGHT);
+
+        }
+    }//GEN-LAST:event_comprarBtnActionPerformed
+
+    private void pesquisaFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesquisaFDActionPerformed
+
+    private void pesquisaFDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisaFDKeyTyped
+        // TODO add your handling code here:
+
+        atualizarClienteList(pesquisaFD.getText());
+    }//GEN-LAST:event_pesquisaFDKeyTyped
+
+    private void clienteListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clienteListMouseClicked
+        // TODO add your handling code here:
+        label.setText(clienteList.getSelectedValue().getNome());
+    }//GEN-LAST:event_clienteListMouseClicked
+
+    private void novoClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoClienteBtnActionPerformed
+        // TODO add your handling code here:
+        CadastroClienteView cad = new CadastroClienteView(this);
+        cad.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_novoClienteBtnActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        h.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void trashBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trashBtnActionPerformed
+        // TODO add your handling code here:
+
+        DefaultListModel<Produto> vendaModel = (DefaultListModel) vendaList.getModel();
+        DefaultListModel<Produto> qtdModel = (DefaultListModel) qtdList.getModel();
+        vendaModel.removeElementAt(vendaList.getSelectedIndex());
+        qtdModel.removeElementAt(qtdList.getSelectedIndex());
+
+    }//GEN-LAST:event_trashBtnActionPerformed
+    protected void atualizarClienteList(String nome) {
+        DefaultListModel<Cliente> Model = (DefaultListModel) clienteList.getModel();
+        CRUD oi;
+        try {
+            oi = new CRUD();
+            Model.clear();
+            for (Cliente cliente : oi.getTodosCliente(nome)) {
+                Model.addElement(cliente);
+                System.out.println("try 2");
+
+            }
+            Produto p = estoqueList.getModel().getElementAt(1);
+
+        } catch (Exception e) {
+            System.out.println("erro excesão 2");
+
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -109,14 +393,26 @@ public class VendaView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VendaView().setVisible(true);
+                new VendaView(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JList<Cliente> clienteList;
+    private javax.swing.JButton comprarBtn;
     private javax.swing.JList<Produto> estoqueList;
     private javax.swing.JLabel fundo;
+    private javax.swing.JLabel label;
+    private javax.swing.JButton novoClienteBtn;
     private javax.swing.JScrollPane panel;
+    private javax.swing.JScrollPane panel1;
+    private javax.swing.JScrollPane panel2;
+    private javax.swing.JScrollPane panel3;
+    private javax.swing.JTextField pesquisaFD;
+    private javax.swing.JList<String> qtdList;
+    private javax.swing.JButton trashBtn;
+    private javax.swing.JList<Produto> vendaList;
     // End of variables declaration//GEN-END:variables
 }

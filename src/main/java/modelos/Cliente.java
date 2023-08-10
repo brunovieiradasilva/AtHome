@@ -10,14 +10,18 @@ package modelos;
  */
 public class Cliente {
 
-  private  String nome, cpf, email, rg,  endereço;
+    private String nome, cpf, email, rg, endereço;
 
-    public Cliente(String nome, String cpf, String email,String rg, String endereço) {
+    public Cliente(String nome, String cpf, String email, String rg, String endereço) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.rg = rg;
         this.endereço = endereço;
+    }
+
+    public Cliente(String nome) {
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -59,5 +63,12 @@ public class Cliente {
     public void setEndereço(String endereço) {
         this.endereço = endereço;
     }
-    
+
+    @Override
+    public String toString() {
+        String[] s = nome.split(" ");
+        
+        return s[0]; 
+    }
+
 }
