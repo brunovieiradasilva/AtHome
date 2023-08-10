@@ -16,13 +16,23 @@ import modelos.Cliente;
  */
 public class CadastroClienteView extends javax.swing.JFrame {
 
-    private clienteHomeView h;
+    private clienteHomeView h = null;
+    private VendaView v = null;
 
     /**
      * Creates new form Cadastro
      */
+    public CadastroClienteView() {
+        initComponents();
+    }
+
     public CadastroClienteView(clienteHomeView home) {
         h = home;
+        initComponents();
+    }
+
+    public CadastroClienteView(VendaView home) {
+        v = home;
         initComponents();
     }
 
@@ -150,7 +160,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
             checkEmail = emailFD.getText().contains("@") && (emailFD.getText().endsWith(".com") || emailFD.getText().endsWith(".br"));
 
             if (!checkIfClienteExist && checkEmail) {
-                Cliente cliente = new Cliente(nomeFD.getText(),cpfFD.getText(),emailFD.getText(),rgFD.getText(), enderecoFD.getText());
+                Cliente cliente = new Cliente(nomeFD.getText(), cpfFD.getText(), emailFD.getText(), rgFD.getText(), enderecoFD.getText());
                 oi.add(cliente);
                 dispose();
                 JOptionPane.showMessageDialog(this, "Cliente adicionado com sucesso!", "Cadastro realizado!", HEIGHT);
@@ -172,7 +182,10 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        h.setVisible(true);
+        if (h != null) {
+            h.setVisible(true);
+        } else if (v != null)
+            v.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     private void rgFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgFDActionPerformed
@@ -184,30 +197,31 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_enderecoFDActionPerformed
 
     private void nomeFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeFDKeyPressed
-enterPressed(evt);        // TODO add your handling code here:
+        enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_nomeFDKeyPressed
 
     private void cpfFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpfFDKeyPressed
-enterPressed(evt);        // TODO add your handling code here:
+        enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_cpfFDKeyPressed
 
     private void rgFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rgFDKeyPressed
-enterPressed(evt);        // TODO add your handling code here:
+        enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_rgFDKeyPressed
 
     private void emailFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFDKeyPressed
-enterPressed(evt);        // TODO add your handling code here:
+        enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_emailFDKeyPressed
 
     private void enderecoFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enderecoFDKeyPressed
-enterPressed(evt);        // TODO add your handling code here:
+        enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_enderecoFDKeyPressed
 
-     private void enterPressed(java.awt.event.KeyEvent evt) {
+    private void enterPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             buttonActionPerformed(null);
         }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -241,7 +255,8 @@ enterPressed(evt);        // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroClienteView(null).setVisible(true);
+
+                new CadastroClienteView().setVisible(true);
             }
         });
     }

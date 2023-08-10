@@ -34,9 +34,9 @@ public class ProdutoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        prdNome = new modelos.RoundField(10);
-        prdPreco = new modelos.RoundField(10);
-        prdQuantidade = new modelos.RoundField(10);
+        prdNome = new javax.swing.JTextField();
+        prdPreco = new javax.swing.JTextField();
+        prdQuantidade = new javax.swing.JTextField();
         salvarBtn = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
 

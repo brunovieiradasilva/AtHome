@@ -4,37 +4,25 @@
  */
 package Telas;
 
-import connection.CRUD;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
-import modelos.Produto;
 
 /**
  *
  * @author Bruno
  */
-public class EditView extends javax.swing.JFrame {
+public class DefaultEditView extends javax.swing.JFrame {
 
-    Produto p;
-String field;
-EstoqueView estoque;
+String field, nome;
+
     /**
      * Creates new form editView
      */
-    public EditView() {
+    public DefaultEditView() {
         getContentPane().setBackground(new java.awt.Color(32, 28, 36));
         initComponents();
     }
 
-    public EditView(EstoqueView estoque, Produto p, String field) {
-
-        getContentPane().setBackground(new java.awt.Color(32, 28, 36));
-        this.p = p;
-        this.field = field;
-        this.estoque = estoque;
-        initComponents();
-        label.setText(label.getText() + field + ":");
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +38,7 @@ EstoqueView estoque;
         salvarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Editar informação");
+        setTitle("Quantidade");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -71,7 +59,7 @@ EstoqueView estoque;
 
         label.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         label.setForeground(new java.awt.Color(255, 255, 255));
-        label.setText("Novo ");
+        label.setText("Quantidade:");
 
         salvarBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\Salvar-button.png")); // NOI18N
         salvarBtn.setContentAreaFilled(false);
@@ -122,16 +110,7 @@ EstoqueView estoque;
 
     private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         // TODO add your handling code here:
-        CRUD oi;
-        try {
-            oi = new CRUD();
-            oi.edit("estoque", p.getId_produto(), field,textField.getText());
-            estoque.atualizarEstoqueList(" ");
-            dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Algum erro ocorreu!", "Erro ao adicionar item.", HEIGHT);
-
-        }
+       
     }//GEN-LAST:event_salvarBtnActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -156,28 +135,30 @@ EstoqueView estoque;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DefaultEditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DefaultEditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DefaultEditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DefaultEditView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditView().setVisible(true);
+                new DefaultEditView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel label;
-    private javax.swing.JButton salvarBtn;
-    private javax.swing.JTextField textField;
+    protected javax.swing.JButton salvarBtn;
+    protected javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
 }

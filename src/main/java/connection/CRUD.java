@@ -13,6 +13,7 @@ import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.database.GenericTypeIndicator;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -68,8 +69,10 @@ public class CRUD {
         try {
             venda.setActualTimestamp();
             ApiFuture<DocumentReference> addedDocRef = db.collection("venda").add(venda);
+            System.out.println("enviou");
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -113,6 +116,63 @@ public class CRUD {
 
     }
 
+    public Cliente[] getTodosCliente() {
+        int i = 0;
+
+        try {
+// asynchronously retrieve all documents
+            ApiFuture<QuerySnapshot> tdCliente = db.collection("cliente").get();
+// future.get() blocks on response
+            List<QueryDocumentSnapshot> documentos = tdCliente.get().getDocuments();
+            Cliente[] lista = new Cliente[documentos.size()];
+            for (QueryDocumentSnapshot document : documentos) {
+                lista[i] = new Cliente(document.getString("nome"), document.getString("cpf"), document.getString("email"), document.getString("rg"), document.getString("endereco"));
+
+                i++;
+            }
+            System.out.println("try");
+
+            return lista;
+        } catch (Exception e) {
+            Cliente p = new Cliente("erro ao carregar");
+            Cliente[] cli = {p};
+            System.out.println("erro excesão");
+            e.printStackTrace();
+            return cli;
+        }
+
+    }
+
+    public Vendas[] getTodosVendas() {
+        int i = 0;
+
+        try {
+// asynchronously retrieve all documents
+            ApiFuture<QuerySnapshot> tdCliente = db.collection("venda").get();
+// future.get() blocks on response
+            List<QueryDocumentSnapshot> documentos = tdCliente.get().getDocuments();
+
+            Vendas[] lista = new Vendas[documentos.size()];
+
+            for (QueryDocumentSnapshot document : documentos) {
+               // List produtos = document.get("produtos", List.class);
+                // List quantidade = document.get("produtos", List.class);
+               //   List valores = document.get("produtos", List.class);
+                //lista[i] = new Vendas(document.getString("vendedor_id"), document.getString("cliente_id"), (List<String>)produtos,(List<String>) quantidade,(List<String>) valores, document.getTimestamp("timestamp"), document.getId());
+lista[i] = document.toObject(Vendas.class);
+lista[i].setId(document.getId());
+                i++;
+            }
+            System.out.println("try");
+
+            return lista;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
     public Produto[] getTodosProdutos(String nome) {
         int i = 0;
 
@@ -137,6 +197,34 @@ public class CRUD {
             System.out.println("erro excesão");
             e.printStackTrace();
             return prod;
+        }
+
+    }
+
+    public Cliente[] getTodosCliente(String cpf) {
+        int i = 0;
+
+        try {
+// asynchronously retrieve all documents
+            ApiFuture<QuerySnapshot> tdCliente = db.collection("cliente").get();
+// future.get() blocks on response
+            List<QueryDocumentSnapshot> documentos = tdCliente.get().getDocuments();
+            Cliente[] lista = new Cliente[documentos.size()];
+            for (QueryDocumentSnapshot document : documentos) {
+                if (document.getString("cpf").toLowerCase().contains(cpf.toLowerCase())) {
+                    lista[i] = new Cliente(document.getString("nome"), document.getString("cpf"), document.getString("email"), document.getString("rg"), document.getString("endereco"));
+                }
+                i++;
+            }
+            System.out.println("try");
+
+            return lista;
+        } catch (Exception e) {
+            Cliente p = new Cliente("erro ao carregar");
+            Cliente[] cli = {p};
+            System.out.println("erro excesão");
+            e.printStackTrace();
+            return cli;
         }
 
     }

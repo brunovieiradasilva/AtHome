@@ -60,6 +60,11 @@ public class HomeView extends javax.swing.JFrame {
 
         vendaBtn.setContentAreaFilled(false);
         vendaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        vendaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(vendaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 280, 190, 200));
 
         cadClienteBtn.setContentAreaFilled(false);
@@ -129,6 +134,13 @@ public class HomeView extends javax.swing.JFrame {
         clienteView.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_cadClienteBtnActionPerformed
+
+    private void vendaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtnActionPerformed
+        // TODO add your handling code here:
+         VendaView vendaView = new VendaView(this);
+        vendaView.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_vendaBtnActionPerformed
 
     /**
      * @param args the command line arguments
