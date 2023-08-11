@@ -43,6 +43,7 @@ public class VendaView extends javax.swing.JFrame {
     private void initComponents() {
 
         totalc = new javax.swing.JLabel();
+        homeBTn = new javax.swing.JButton();
         comi = new javax.swing.JLabel();
         trashBtn = new javax.swing.JButton();
         novoClienteBtn = new javax.swing.JButton();
@@ -74,6 +75,16 @@ public class VendaView extends javax.swing.JFrame {
         totalc.setForeground(new java.awt.Color(255, 255, 255));
         totalc.setText("total: ");
         getContentPane().add(totalc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, -1, -1));
+
+        homeBTn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\homeBtn.png")); // NOI18N
+        homeBTn.setContentAreaFilled(false);
+        homeBTn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        homeBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(homeBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 730, -1, -1));
 
         comi.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         comi.setForeground(new java.awt.Color(255, 255, 255));
@@ -357,6 +368,12 @@ public class VendaView extends javax.swing.JFrame {
         qtdModel.removeElementAt(qtdList.getSelectedIndex());
         calcularComi();
     }//GEN-LAST:event_trashBtnActionPerformed
+
+    private void homeBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        h.setVisible(true);
+    }//GEN-LAST:event_homeBTnActionPerformed
     protected void atualizarClienteList(String nome) {
         DefaultListModel<Cliente> Model = (DefaultListModel) clienteList.getModel();
         CRUD oi;
@@ -428,6 +445,7 @@ public class VendaView extends javax.swing.JFrame {
     private javax.swing.JButton comprarBtn;
     private javax.swing.JList<Produto> estoqueList;
     private javax.swing.JLabel fundo;
+    private javax.swing.JButton homeBTn;
     private javax.swing.JLabel label;
     private javax.swing.JButton novoClienteBtn;
     private javax.swing.JScrollPane panel;

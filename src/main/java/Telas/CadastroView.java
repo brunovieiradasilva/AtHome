@@ -35,6 +35,7 @@ public class CadastroView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        homeBTn = new javax.swing.JButton();
         nomeFD = new javax.swing.JTextField();
         cpfFD = new javax.swing.JTextField();
         usuarioFD = new javax.swing.JTextField();
@@ -52,6 +53,16 @@ public class CadastroView extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        homeBTn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\homeBtn.png")); // NOI18N
+        homeBTn.setContentAreaFilled(false);
+        homeBTn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        homeBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(homeBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, -1, -1));
 
         nomeFD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeFD.setForeground(new java.awt.Color(51, 51, 51));
@@ -185,6 +196,12 @@ enterPressed(evt);        // TODO add your handling code here:
 enterPressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_senhaFDKeyPressed
 
+    private void homeBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        h.setVisible(true);
+    }//GEN-LAST:event_homeBTnActionPerformed
+
      private void enterPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             buttonActionPerformed(null);
@@ -231,6 +248,7 @@ enterPressed(evt);        // TODO add your handling code here:
     private javax.swing.JTextField cpfFD;
     private javax.swing.JTextField emailFD;
     private javax.swing.JLabel fundo;
+    private javax.swing.JButton homeBTn;
     private javax.swing.JTextField nomeFD;
     private javax.swing.JPasswordField senhaFD;
     private javax.swing.JTextField usuarioFD;
