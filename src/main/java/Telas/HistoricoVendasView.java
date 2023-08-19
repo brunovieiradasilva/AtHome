@@ -41,6 +41,7 @@ public class HistoricoVendasView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        homeBTn = new javax.swing.JButton();
         prdVendedor = new javax.swing.JTextField();
         panel = new javax.swing.JScrollPane();
         estoqueList = new javax.swing.JList<>();
@@ -60,6 +61,16 @@ public class HistoricoVendasView extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        homeBTn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\trabalhodejava\\src\\main\\java\\imagens\\homeBtn.png")); // NOI18N
+        homeBTn.setContentAreaFilled(false);
+        homeBTn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        homeBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBTnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(homeBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 720, -1, -1));
 
         prdVendedor.setEditable(false);
         prdVendedor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -205,6 +216,12 @@ public class HistoricoVendasView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_pesquisaFDKeyTyped
 
+    private void homeBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBTnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        h.setVisible(true);
+    }//GEN-LAST:event_homeBTnActionPerformed
+
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
         limparLista();
@@ -282,6 +299,7 @@ public class HistoricoVendasView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<Vendas> estoqueList;
     private javax.swing.JLabel fundo;
+    private javax.swing.JButton homeBTn;
     private javax.swing.JScrollPane panel;
     private javax.swing.JTextField pesquisaFD;
     private javax.swing.JTextField prdCliente;
