@@ -11,7 +11,6 @@ package modelos;
 import com.google.cloud.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -109,13 +108,9 @@ public class Vendas {
     public String toString(){
       
         Date data = timestamp.toDate();
-        DateFormat f = DateFormat.getDateInstance();
-        Locale brasil = new Locale("pt", "BR");
+        Locale brasil = Locale.getDefault();
         DateFormat f2 = DateFormat.getDateInstance(DateFormat.LONG, brasil);
-
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        Date hora = Calendar. getInstance(). getTime();
-
         return f2.format(data) + " as " + sdf.format(data);
          
     }

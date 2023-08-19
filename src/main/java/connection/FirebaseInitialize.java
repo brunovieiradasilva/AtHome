@@ -24,7 +24,7 @@ public class FirebaseInitialize {
   
             FileInputStream serviceAccount = new FileInputStream("src\\main\\java\\connection/trabalholp-a4cc2-firebase-adminsdk-lg0k9-c0acc1c243.json");
 
-            FirebaseOptions options = new FirebaseOptions.Builder()
+            FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setDatabaseUrl("https://trabalholp-a4cc2-default-rtdb.firebaseio.com")
                     .build();

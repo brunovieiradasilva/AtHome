@@ -13,7 +13,8 @@ import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
-import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.internal.NonNull;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -290,7 +291,7 @@ lista[i].setId(document.getId());
         }
     }
 
-    public boolean edit(String colecao, String ID, String field, String newValue) {
+    public boolean edit(String colecao , String ID, String field, String newValue) {
         try {
 
             // Update an existing document
